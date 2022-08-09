@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "evelatorian",
+  "npmScope": "elevatorian",
   "affected": {
     "defaultBase": "main"
   },
@@ -23,10 +23,6 @@
     "build": {
       "dependsOn": ["^build"]
     }
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
   },
   "generators": {
     "@nrwl/react": {
