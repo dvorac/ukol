@@ -4,12 +4,15 @@
  */
 
 import * as express from 'express';
+import apolloServer from './app/graphql';
 
 const app = express();
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to express-app!' });
 });
+
+apolloServer.applyMiddleware({ app });
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
