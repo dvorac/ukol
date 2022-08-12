@@ -3,6 +3,16 @@ import { ApolloServer, gql } from 'apollo-server-express';
 import * as http from 'http';
 import resolvers from "./resolvers";
 
+/**
+ * Returns a configured instance of an Apollo Graphql Server,
+ * intended to be attached to an existing express server instance.
+ *
+ * See Also:
+ * - https://www.apollographql.com/docs/apollo-server/integrations/middleware
+ *
+ * @param httpServer the root http server for the express app.
+ * @returns a new {ApolloServer} instance.
+ */
 const apolloServer = (httpServer: http.Server) => new ApolloServer({
   typeDefs: gql`
     scalar Date
