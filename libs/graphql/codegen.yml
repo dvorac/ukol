@@ -1,17 +1,14 @@
 overwrite: true
 schema: libs/graphql/src/schema.graphql
 generates:
+
+  # common schema
   libs/graphql/src/generated/schema.ts:
     plugins:
-      - "typescript"
-  libs/graphql/src/generated/operations.ts:
-    documents: libs/graphql/src/lib/operations/**/*.graphql
-    preset: import-types
-    presetConfig:
-      typesPath: libs/graphql/src/generated/schema
-    plugins:
-      - "typescript-operations"
-  libs/graphql/src/generated/typedefs.ts:
+      - typescript
+
+  # backend
+  libs/graphql/src/generated/api/typedefs.ts:
     plugins:
       - add:
           content: "import gql from 'graphql-tag';"
@@ -21,3 +18,23 @@ generates:
           placement: append
           content: "`"
       - schema-ast
+
+  # frontend
+  libs/graphql/src/generated/client/operations.ts:
+    documents: libs/graphql/src/lib/operations/**/*.graphql
+    preset: import-types
+    presetConfig:
+      typesPath: libs/graphql/src/generated/schema
+    plugins:
+      - typescript-operations
+  libs/graphql/src/generated/client/hooks.ts:
+    documents: libs/graphql/src/lib/operations/**/*.graphql
+    preset: import-types
+    presetConfig:
+      typesPath: 'libs/graphql/src/generated/client/operations'
+      importTypesNamespace: Operations
+    plugins:
+        - typescript-react-apollo
+    config:
+      withRefetchFn: true
+      withHooks: true
