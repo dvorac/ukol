@@ -3,7 +3,6 @@
   "version": 2,
   "projects": {
     "express-app": "apps/express-app",
-    "graphql": "libs/graphql",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e"
   }

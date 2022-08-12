@@ -1,7 +1,5 @@
 const personQueries = {
-  person: async(parent, args, context, info) => {
-    return { id: args.id, name: 'Dustin' }
-  }
+  person: async(_, args) => {}
 };
 
 export default personQueries;
