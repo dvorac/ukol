@@ -1,0 +1,14 @@
+scalar Date
+
+schema {
+  query: Query
+}
+
+type Query {
+  person(id: ID!): Person
+}
+
+type Person {
+  id: ID!
+  name: String!
+}

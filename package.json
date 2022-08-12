@@ -9,7 +9,6 @@
   },
   "private": true,
   "dependencies": {
-    "@graphql-tools/schema": "^9.0.0",
     "apollo-server-express": "^3.10.0",
     "core-js": "^3.6.5",
     "express": "^4.18.1",
@@ -22,6 +21,11 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.11.6",
+    "@graphql-codegen/import-types-preset": "^2.2.3",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@graphql-tools/schema": "^9.0.1",
     "@nrwl/cli": "14.5.4",
     "@nrwl/cypress": "14.5.4",
     "@nrwl/eslint-plugin-nx": "14.5.4",

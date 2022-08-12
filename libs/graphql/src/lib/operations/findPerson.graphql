@@ -1,0 +1,10 @@
+query findPerson($id: ID!) {
+  person(id: $id) {
+    ...PersonFields
+  }
+}
+
+fragment PersonFields on Person {
+  id
+  name
+}
