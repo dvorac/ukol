@@ -1,0 +1,23 @@
+overwrite: true
+schema: libs/graphql/src/schema.graphql
+generates:
+  libs/graphql/src/generated/schema.ts:
+    plugins:
+      - "typescript"
+  libs/graphql/src/generated/operations.ts:
+    documents: libs/graphql/src/lib/operations/**/*.graphql
+    preset: import-types
+    presetConfig:
+      typesPath: libs/graphql/src/generated/schema
+    plugins:
+      - "typescript-operations"
+  libs/graphql/src/generated/typedefs.ts:
+    plugins:
+      - add:
+          content: "import gql from 'graphql-tag';"
+      - add:
+          content: "export const typedefs = gql`"
+      - add:
+          placement: append
+          content: "`"
+      - schema-ast
