@@ -1,4 +1,0 @@
-type Person {
-  name: String
-  dob: String
-}

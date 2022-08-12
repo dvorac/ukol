@@ -4,9 +4,6 @@ const resolvers = {
   Query: {
     ...personQueries
   },
-  Mutation: {
-    //...
-  }
 };
 
 export default resolvers;
