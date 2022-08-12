@@ -4,18 +4,36 @@
  */
 
 import * as express from 'express';
+import * as http from 'http';
 import apolloServer from './app/graphql';
 
-const app = express();
+/**
+ * App entry point for express/apollo server.
+ *
+ * See also:
+ * - https://www.apollographql.com/docs/apollo-server/integrations/middleware
+ */
+const main = async () => {
+  const app = express();
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to express-app!' });
-});
+  const httpserver = http.createServer(app);
 
-apolloServer.applyMiddleware({ app });
+  const apollo = apolloServer(httpserver);
+  await apollo.start();
+  apollo.applyMiddleware({ app });
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+  app.get('/api', (_, res) => {
+    console.log(`api called!`)
+    res.send({ message: 'Welcome to express-app!' });
+  });
+
+  const port = process.env.port || 3333;
+
+  await new Promise<void>(resolve => {
+    httpserver.listen(port, resolve);
+  });
+
+  console.log(`Listening at http://localhost:${port}`);
+};
+
+main();
