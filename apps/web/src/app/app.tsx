@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
+import apollo from './apollo';
+import { Home } from './home';
+import { ApolloProvider } from '@apollo/client';
 
 const StyledApp = styled.div`
   // Your style here
@@ -7,9 +9,11 @@ const StyledApp = styled.div`
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="web" />
-    </StyledApp>
+    <ApolloProvider client={apollo}>
+      <StyledApp>
+        <Home />
+      </StyledApp>
+    </ApolloProvider>
   );
 }
 
