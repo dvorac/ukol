@@ -44,6 +44,3 @@ export function useFindPersonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type FindPersonQueryHookResult = ReturnType<typeof useFindPersonQuery>;
 export type FindPersonLazyQueryHookResult = ReturnType<typeof useFindPersonLazyQuery>;
 export type FindPersonQueryResult = Apollo.QueryResult<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>;
-export function refetchFindPersonQuery(variables: Operations.FindPersonQueryVariables) {
-      return { query: FindPersonDocument, variables: variables }
-    }

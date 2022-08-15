@@ -2,12 +2,16 @@ overwrite: true
 schema: libs/graphql/src/schema.graphql
 generates:
 
+  #
   # common schema
+  #
   libs/graphql/src/generated/schema.ts:
     plugins:
       - typescript
 
+  #
   # backend
+  #
   libs/graphql/src/generated/api/typedefs.ts:
     plugins:
       - add:
@@ -19,7 +23,9 @@ generates:
           content: "`"
       - schema-ast
 
+  #
   # frontend
+  #
   libs/graphql/src/generated/client/operations.ts:
     documents: libs/graphql/src/lib/operations/**/*.graphql
     preset: import-types
@@ -27,6 +33,8 @@ generates:
       typesPath: libs/graphql/src/generated/schema
     plugins:
       - typescript-operations
+  # operations and hooks need to be generated separately,
+  # see https://github.com/dotansimha/graphql-code-generator/issues/2742#issuecomment-542285543
   libs/graphql/src/generated/client/hooks.ts:
     documents: libs/graphql/src/lib/operations/**/*.graphql
     preset: import-types
@@ -36,5 +44,4 @@ generates:
     plugins:
         - typescript-react-apollo
     config:
-      withRefetchFn: true
       withHooks: true
