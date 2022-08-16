@@ -3,11 +3,11 @@ export const typedefs = gql`
 scalar Date
 
 type Person {
-  id: ID!
   name: String!
+  uuid: ID!
 }
 
 type Query {
-  person(id: ID!): Person
+  person(uuid: ID!): Person
 }
 `

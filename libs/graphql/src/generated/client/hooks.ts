@@ -5,13 +5,13 @@ import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
 export const PersonFieldsFragmentDoc = gql`
     fragment PersonFields on Person {
-  id
+  uuid
   name
 }
     `;
 export const FindPersonDocument = gql`
-    query findPerson($id: ID!) {
-  person(id: $id) {
+    query findPerson($uuid: ID!) {
+  person(uuid: $uuid) {
     ...PersonFields
   }
 }
@@ -29,7 +29,7 @@ export const FindPersonDocument = gql`
  * @example
  * const { data, loading, error } = useFindPersonQuery({
  *   variables: {
- *      id: // value for 'id'
+ *      uuid: // value for 'uuid'
  *   },
  * });
  */

@@ -6,6 +6,7 @@
 import * as express from 'express';
 import * as http from 'http';
 import apolloServer from './app/graphql';
+import { initDb } from './app/db/init';
 
 /**
  * App entry point for express/apollo server.
@@ -21,6 +22,8 @@ const main = async () => {
   const apollo = apolloServer(httpserver);
   await apollo.start();
   apollo.applyMiddleware({ app });
+
+  await initDb();
 
   app.get('/api', (_, res) => {
     console.log(`api called!`)
