@@ -51,6 +51,17 @@
         "jestConfig": "apps/express-app/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "knex": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx knex"
+          }
+        ],
+        "cwd": "apps/express-app"
+      }
     }
   },
   "tags": []

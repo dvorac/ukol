@@ -1,10 +1,10 @@
-query findPerson($id: ID!) {
-  person(id: $id) {
+query findPerson($uuid: ID!) {
+  person(uuid: $uuid) {
     ...PersonFields
   }
 }
 
 fragment PersonFields on Person {
-  id
+  uuid
   name
 }

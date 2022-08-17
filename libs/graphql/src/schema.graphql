@@ -5,10 +5,10 @@ schema {
 }
 
 type Query {
-  person(id: ID!): Person
+  person(uuid: ID!): Person
 }
 
 type Person {
-  id: ID!
+  uuid: ID!
   name: String!
 }

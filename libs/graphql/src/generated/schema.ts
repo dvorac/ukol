@@ -15,8 +15,8 @@ export type Scalars = {
 
 export type Person = {
   __typename?: 'Person';
-  id: Scalars['ID'];
   name: Scalars['String'];
+  uuid: Scalars['ID'];
 };
 
 export type Query = {
@@ -26,5 +26,5 @@ export type Query = {
 
 
 export type QueryPersonArgs = {
-  id: Scalars['ID'];
+  uuid: Scalars['ID'];
 };
