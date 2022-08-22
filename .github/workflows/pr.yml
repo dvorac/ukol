@@ -20,6 +20,8 @@ jobs:
       # see https://nx.dev/using-nx/affected
       - uses: nrwl/nx-set-shas@v2
       - run: yarn install --frozen-lockfile
-      # parellelize by 2 for now, it will speed up the build a little, and
-      # we only have 2 apps right now
+      # parellelization will speed up the build a little
+      # concurrency=2 for the expected 2 apps we have (web, express)
       - run: yarn nx affected --target=build --parallel=2
+      - run: yarn nx affected --target=lint --parallel=2
+      - run: yarn nx affected --target=test --parallel=2
