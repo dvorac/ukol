@@ -12,6 +12,14 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      # nx-set-shas lets us take advantage of the smart 'affected' build
+      # functionality in nx. This will speed up builds on PRs considerably,
+      # by only building the apps that saw code changes (or failed the last
+      # build)
+      # see https://github.com/marketplace/actions/nx-set-shas#background
+      # see https://nx.dev/using-nx/affected
       - uses: nrwl/nx-set-shas@v2
       - run: yarn install --frozen-lockfile
-      - run: yarn nx run-many --target=build --ci
+      # parellelize by 2 for now, it will speed up the build a little, and
+      # we only have 2 apps right now
+      - run: yarn nx affected --target=build --parallel=2
