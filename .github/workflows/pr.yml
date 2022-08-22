@@ -7,6 +7,8 @@ on:
       - '!main'
 
 jobs:
+  # the name here is important; github repo settings are watching for this
+  # specific key to know what checks to guard PR merging on
   checks:
     runs-on: ubuntu-latest
     steps:
