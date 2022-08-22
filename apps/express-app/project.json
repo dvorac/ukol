@@ -10,7 +10,7 @@
         "outputPath": "dist/apps/express-app",
         "main": "apps/express-app/src/main.ts",
         "tsConfig": "apps/express-app/tsconfig.app.json",
-        "assets": ["apps/express-app/src/assets"]
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
@@ -53,11 +53,11 @@
       }
     },
     "knex": {
-      "builder": "@nrwl/workspace:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
           {
-            "command": "npx knex"
+            "command": "npx knex --knexfile=db/knexfile.js"
           }
         ],
         "cwd": "apps/express-app"

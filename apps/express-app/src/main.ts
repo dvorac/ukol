@@ -4,9 +4,12 @@
  */
 
 import * as express from 'express';
-import * as http from 'http';
-import apolloServer from './app/graphql';
+import { startApolloServer } from './app/graphql';
 import { initDb } from './app/db/init';
+import { environment } from './environments/environment';
+import * as cors from 'cors';
+import * as morgan from 'morgan';
+import * as http from 'http';
 
 /**
  * App entry point for express/apollo server.
@@ -15,25 +18,33 @@ import { initDb } from './app/db/init';
  * - https://www.apollographql.com/docs/apollo-server/integrations/middleware
  */
 const main = async () => {
+  // init express
   const app = express();
 
-  const httpserver = http.createServer(app);
+  // enable all cors requests, including preflights
+  app.use(cors());
 
-  const apollo = apolloServer(httpserver);
-  await apollo.start();
-  apollo.applyMiddleware({ app });
+  const httpServer = http.createServer(app);
 
-  await initDb();
+  // request and response logging
+  app.use(morgan('combined'));
 
+  // init apollo middleware, and inject into express
+  await startApolloServer(app, httpServer, environment);
+
+  // init db client (knex, postgres)
+  await initDb(environment);
+
+  // inject non-graphql endpoints
   app.get('/api', (_, res) => {
     console.log(`api called!`)
     res.send({ message: 'Welcome to express-app!' });
   });
 
+  // start express server
   const port = process.env.port || 3333;
-
   await new Promise<void>(resolve => {
-    httpserver.listen(port, resolve);
+    httpServer.listen(port, resolve);
   });
 
   console.log(`Listening at http://localhost:${port}`);

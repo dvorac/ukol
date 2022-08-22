@@ -19,7 +19,7 @@
       }
     },
     "codegen": {
-      "builder": "@nrwl/workspace:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
           {
