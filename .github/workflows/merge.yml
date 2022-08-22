@@ -1,4 +1,4 @@
-name: Elevatorian SDLC - Pull Request
+name: Elevatorian SDLC - Production
 
 on:
   push:
