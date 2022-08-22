@@ -29,6 +29,4 @@ export const startApolloServer = async (app, httpServer, env: any) => {
   });
 }
 
-const;
-
 export default startApolloServer;
