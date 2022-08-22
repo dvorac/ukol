@@ -3,8 +3,7 @@ name: Elevatorian SDLC - Pull Request
 on:
   push:
     branches:
-      - '*'
-      - '!main'
+      - 'main'
 
 jobs:
   checks:
@@ -23,6 +22,6 @@ jobs:
       - run: yarn install --frozen-lockfile
       # parellelization will speed up the build a little
       # concurrency=2 for the expected 2 apps we have (web, express)
-      - run: yarn nx affected --target=build --parallel=2
-      - run: yarn nx affected --target=lint --parallel=2
-      - run: yarn nx affected --target=test --parallel=2
+      - run: yarn nx run-many --target=build --parallel=2
+      - run: yarn nx run-many --target=lint --parallel=2
+      - run: yarn nx run-many --target=test --parallel=2
