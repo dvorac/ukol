@@ -1,94 +1,32 @@
-
-
 # Elevatorian
 
-This project was generated using [Nx](https://nx.dev).
+This project is an exercise in several skills for my own professional software development expertise. I develop this project less to create new features for the app itself, but rather to practice meta-skills I know will be useful in professional software teams.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+That said, this app is a simple elevator simulator. At it's simplest configuration, it simply shows a simulation of a bank of elevators, and produces some simple metrics for how those elevators perform (#number of passengers carried, etc.).
 
-🔎 **Smart, Fast and Extensible Build System**
+## Requirements
 
-## Adding capabilities to your workspace
+This project is a monorepo managed with [`nx`](https://nx.dev/). You will need to be able to run docker containers locally to run the app, with software such as [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/). You also need [`yarn`](https://yarnpkg.com/) to install dependencies and run the app locally.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```
+yarn
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Getting Started
 
-Below are our core plugins:
+All app components can be run entirely from a single docker command
+```
+docker-compose up -d
+```
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+or, you can run them locally thru `nx`
+```
+yarn nx run-many --target=build
+yarn nx run-many --target=serve
+```
+When running thru NX, you will still need to setup your own local Postgres database instance.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Feature List
 
-## Generate an application
+See the [Github Project](https://github.com/users/dvorac/projects/1) for current features, and the next thing I'm working on.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@elevatorian/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
