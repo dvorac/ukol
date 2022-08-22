@@ -1,7 +1,6 @@
 import { typedefs } from "@elevatorian/graphql";
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
-import * as http from 'http';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import resolvers from "./resolvers";
 
 /**
@@ -11,18 +10,23 @@ import resolvers from "./resolvers";
  * See Also:
  * - https://www.apollographql.com/docs/apollo-server/integrations/middleware
  *
- * @param httpServer the root http server for the express app.
  * @returns a new {ApolloServer} instance.
  */
-const apolloServer = (httpServer: http.Server) => new ApolloServer({
-  typeDefs: typedefs,
-  resolvers: resolvers,
-  plugins: [
-    // Our httpServer handles incoming requests to our Express app.
-    // Below, we tell Apollo Server to "drain" this httpServer,
-    // enabling our servers to shut down gracefully.
-    ApolloServerPluginDrainHttpServer({ httpServer }),
-  ]
-});
+export const startApolloServer = async (app, httpServer, env: any) => {
+  const apolloServer = new ApolloServer({
+    typeDefs: typedefs,
+    resolvers: resolvers,
+    csrfPrevention: false,
+    plugins: [
+      ApolloServerPluginDrainHttpServer({ httpServer })
+    ]
+  });
 
-export default apolloServer;
+  await apolloServer.start();
+
+  apolloServer.applyMiddleware({
+    app
+  });
+}
+
+export default startApolloServer;

@@ -1,5 +1,45 @@
 version: '3'
 services:
+
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - 8080:8080
+    environment:
+      - GQL=https://localhost:3333/graphql
+      - API=http://localhost:3333/api
+    depends_on:
+      - app
+    volumes:
+      - web:/web
+
+  app:
+    build:
+      context: .
+      target: express
+    ports:
+      - 3333:3333
+    environment:
+      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/elevatorian
+    depends_on:
+      - db
+      - migrate
+    volumes:
+      - app:/app
+
+  migrate:
+    build:
+      context: .
+      target: migrations
+    environment:
+      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/elevatorian
+    depends_on:
+      - db
+    volumes:
+      - migrate:/app
+
   db:
     image: 'postgres'
     environment:
@@ -10,6 +50,10 @@ services:
       - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data/
+
 volumes:
+  migrate:
+  app:
+  web:
   db:
     driver: local
