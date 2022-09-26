@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nx-base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PLATFORM=LOCAL
+    volumes:
+      - ./:/app
+      - mono-node-modules:/app/node_modules

@@ -19,3 +19,12 @@ A good article on running nx apps in docker. At least helps me understand that "
 
 [Using Profiles with Compose](https://docs.docker.com/compose/profiles/)
 Profiles can enable or disable services. This is probably the best way to selectively start the database for local deployments, but avoid including it in remote deployments. I'd love to use this for adjusting whole service configs (frontend - dev w/HMR vs prod w/minified), however I'm not sure it's suited to that use-case.
+
+[3D Games in Javascript](https://youtu.be/Tfud2Mo_9sY) Apparently there's a neat library called [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) which allows you to just render 3D stuff with React components.
+
+## Random Unorganized Notes Without Context
+
+https://www.terraform.io/
+https://console.cloud.google.com/home/dashboard
+https://www.bam.tech/article/dockerize-your-app-and-keep-hot-reloading
+https://www.codefeetime.com/post/using-docker-compose-with-nx-monorepo-for-multi-apps-development/
