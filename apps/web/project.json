@@ -47,12 +47,13 @@
       "executor": "@nrwl/web:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web:build",
-        "hmr": true
+        "port": 8080,
+        "buildTarget": "web:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development"
+          "buildTarget": "web:build:development",
+          "hmr": true
         },
         "production": {
           "buildTarget": "web:build:production",

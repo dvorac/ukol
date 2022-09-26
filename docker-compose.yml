@@ -2,9 +2,10 @@ version: '3'
 services:
 
   web:
-    build:
-      context: .
-      target: web
+    extends:
+      file: docker-compose.base.yml
+      service: nx-base
+    command: yarn nx serve web --host=0.0.0.0
     ports:
       - 8080:8080
     environment:
@@ -12,33 +13,30 @@ services:
       - API=http://localhost:3333/api
     depends_on:
       - app
-    volumes:
-      - web:/web
 
   app:
-    build:
-      context: .
-      target: express
+    extends:
+      file: docker-compose.base.yml
+      service: nx-base
+    command: yarn nx serve express-app --host=0.0.0.0
     ports:
       - 3333:3333
     environment:
+      - PORT=3333
       - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/elevatorian
     depends_on:
       - db
       - migrate
-    volumes:
-      - app:/app
 
   migrate:
-    build:
-      context: .
-      target: migrations
+    extends:
+      file: docker-compose.base.yml
+      service: nx-base
+    command: ash ./apps/express-app/db/run_migrations.sh
     environment:
       - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/elevatorian
     depends_on:
       - db
-    volumes:
-      - migrate:/app
 
   db:
     image: 'postgres'
@@ -52,8 +50,6 @@ services:
       - db:/var/lib/postgresql/data/
 
 volumes:
-  migrate:
-  app:
-  web:
+  mono-node-modules: null
   db:
     driver: local
