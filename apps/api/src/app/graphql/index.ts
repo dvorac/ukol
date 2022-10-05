@@ -1,7 +1,7 @@
-import { typedefs } from "@elevatorian/graphql";
+import { typedefs } from '@ukol/graphql';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
-import resolvers from "./resolvers";
+import resolvers from './resolvers';
 
 /**
  * Returns a configured instance of an Apollo Graphql Server,
@@ -17,16 +17,14 @@ export const startApolloServer = async (app, httpServer, env: any) => {
     typeDefs: typedefs,
     resolvers: resolvers,
     csrfPrevention: false,
-    plugins: [
-      ApolloServerPluginDrainHttpServer({ httpServer })
-    ]
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
   await apolloServer.start();
 
   apolloServer.applyMiddleware({
-    app
+    app,
   });
-}
+};
 
 export default startApolloServer;

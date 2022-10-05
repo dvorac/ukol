@@ -1,4 +1,4 @@
-import { useFindPersonQuery } from '@elevatorian/graphql'
+import { useFindPersonQuery } from '@ukol/graphql'
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { environment } from '../environments/environment';
