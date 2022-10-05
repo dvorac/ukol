@@ -1,15 +1,15 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/express-app/src",
+  "sourceRoot": "apps/api/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/express-app",
-        "main": "apps/express-app/src/main.ts",
-        "tsConfig": "apps/express-app/tsconfig.app.json",
+        "outputPath": "dist/apps/api",
+        "main": "apps/api/src/main.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
         "generatePackageJson": true
       },
       "configurations": {
@@ -19,8 +19,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/express-app/src/environments/environment.ts",
-              "with": "apps/express-app/src/environments/environment.prod.ts"
+              "replace": "apps/api/src/environments/environment.ts",
+              "with": "apps/api/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -29,11 +29,11 @@
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
-        "buildTarget": "express-app:build"
+        "buildTarget": "api:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "express-app:build:production"
+          "buildTarget": "api:build:production"
         }
       }
     },
@@ -41,14 +41,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/express-app/**/*.ts"]
+        "lintFilePatterns": ["apps/api/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/express-app"],
+      "outputs": ["coverage/apps/api"],
       "options": {
-        "jestConfig": "apps/express-app/jest.config.ts",
+        "jestConfig": "apps/api/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -60,7 +60,7 @@
             "command": "npx knex --knexfile=db/knexfile.js"
           }
         ],
-        "cwd": "apps/express-app"
+        "cwd": "apps/api"
       }
     }
   },

@@ -37,13 +37,13 @@ const main = async () => {
 
   // inject non-graphql endpoints
   app.get('/api', (_, res) => {
-    console.log(`api called!`)
+    console.log(`api called!`);
     res.send({ message: 'Welcome to express-app!' });
   });
 
   // start express server
   const port = process.env.port || 3333;
-  await new Promise<void>(resolve => {
+  await new Promise<void>((resolve) => {
     httpServer.listen(port, resolve);
   });
 

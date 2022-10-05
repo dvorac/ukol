@@ -1,4 +1,6 @@
-# Elevatorian
+# Ukol
+
+This project is my personal Todo app. "úkol" means "task" in Czech.
 
 This project is an exercise in several skills for my own professional software development expertise. I develop this project less to create new features for the app itself, but rather to practice meta-skills I know will be useful in professional software teams.
 

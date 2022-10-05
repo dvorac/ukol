@@ -7,4 +7,4 @@ COPY . .
 RUN yarn
 
 # will be overriden by docker-compose
-CMD ["yarn", "run", "start", "express-app"]
+CMD ["yarn", "run", "start", "api"]
