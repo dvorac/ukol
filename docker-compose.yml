@@ -1,43 +1,6 @@
 version: '3'
 services:
 
-  web:
-    extends:
-      file: docker-compose.base.yml
-      service: nx-base
-    command: yarn nx serve web --host=0.0.0.0
-    ports:
-      - 8080:8080
-    environment:
-      - GQL=https://localhost:3333/graphql
-      - API=http://localhost:3333/api
-    depends_on:
-      - app
-
-  app:
-    extends:
-      file: docker-compose.base.yml
-      service: nx-base
-    command: yarn nx serve api --host=0.0.0.0
-    ports:
-      - 3333:3333
-    environment:
-      - PORT=3333
-      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/ukol
-    depends_on:
-      - db
-      - migrate
-
-  migrate:
-    extends:
-      file: docker-compose.base.yml
-      service: nx-base
-    command: ash ./apps/api/db/run_migrations.sh
-    environment:
-      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/ukol
-    depends_on:
-      - db
-
   db:
     image: 'postgres'
     environment:
@@ -49,7 +12,44 @@ services:
     volumes:
       - db:/var/lib/postgresql/data/
 
+  migrate:
+    extends:
+      file: docker-compose.base.yml
+      service: base
+    command: yarn prisma migrate dev
+    environment:
+      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/ukol
+    depends_on:
+      - db
+
+  app:
+    extends:
+      file: docker-compose.base.yml
+      service: base
+    command: yarn nx serve api --host=0.0.0.0
+    ports:
+      - 3333:3333
+    environment:
+      - PORT=3333
+      - DB_CONNECTION_STRING=postgresql://postgres:postgres@db:5432/ukol
+    depends_on:
+      - db
+      - migrate
+
+  web:
+    extends:
+      file: docker-compose.base.yml
+      service: base
+    command: yarn nx serve web --host=0.0.0.0
+    ports:
+      - 8080:8080
+    environment:
+      - GQL=https://localhost:3333/graphql
+      - API=http://localhost:3333/api
+    depends_on:
+      - app
+
 volumes:
-  mono-node-modules: null
+  node-modules: null
   db:
     driver: local

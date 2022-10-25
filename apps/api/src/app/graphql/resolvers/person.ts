@@ -1,10 +1,12 @@
-import { Person as PersonModel } from '../../db/models';
 import { Person as PersonGql } from '@ukol/graphql';
+import { Context } from '../context';
 
 const personQueries = {
-  person: async (parent, args, context, info) => {
+  person: async (parent, args, context: Context, info) => {
     // fetch
-    const model = await PersonModel.query().findOne('uuid', args.uuid);
+    const model = await context.prisma.person.findFirst({
+      where: { uuid: args.uuid }
+    });
 
     // transpose db model to graphql model
     const gql: PersonGql = {

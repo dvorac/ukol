@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nx-base:
+  base:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,4 +9,4 @@ services:
       - PLATFORM=LOCAL
     volumes:
       - ./:/app
-      - mono-node-modules:/app/node_modules
+      - node-modules:/app/node_modules

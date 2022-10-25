@@ -5,7 +5,6 @@
 
 import * as express from 'express';
 import { startApolloServer } from './app/graphql';
-import { initDb } from './app/db/init';
 import { environment } from './environments/environment';
 import * as cors from 'cors';
 import * as morgan from 'morgan';
@@ -32,12 +31,8 @@ const main = async () => {
   // init apollo middleware, and inject into express
   await startApolloServer(app, httpServer, environment);
 
-  // init db client (knex, postgres)
-  await initDb(environment);
-
   // inject non-graphql endpoints
   app.get('/api', (_, res) => {
-    console.log(`api called!`);
     res.send({ message: 'Welcome to express-app!' });
   });
 

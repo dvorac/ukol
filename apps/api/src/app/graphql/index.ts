@@ -2,6 +2,7 @@ import { typedefs } from '@ukol/graphql';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import resolvers from './resolvers';
+import { context } from './context';
 
 /**
  * Returns a configured instance of an Apollo Graphql Server,
@@ -18,6 +19,7 @@ export const startApolloServer = async (app, httpServer, env: any) => {
     resolvers: resolvers,
     csrfPrevention: false,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: context
   });
 
   await apolloServer.start();
