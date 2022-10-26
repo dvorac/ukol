@@ -7,6 +7,8 @@ import { buildASTSchema } from 'graphql/utilities';
 import { Home } from './home';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// pattern taken from
+// https://www.arahansen.com/testing-apollo-components-using-react-testing-library/
 const testRender = (
   component: React.ReactElement,
   { mocks }: any = {},
@@ -35,7 +37,9 @@ const testRender = (
 }
 
 describe('App', () => {
-
+  // mocking pattern taken from
+  // https://www.the-guild.dev/graphql/tools/docs/mocking and
+  // https://testing-library.com/docs/react-testing-library/example-intro/
   it('should render successfully', () => {
     const component = testRender(<Home thing={undefined} />, { mocks: {
       Person: () => ({ uuid: "1234", name: "Todd" })
