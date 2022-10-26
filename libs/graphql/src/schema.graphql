@@ -2,13 +2,34 @@ scalar Date
 
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
   person(uuid: ID!): Person
+  findTask(uuid: ID!): Task
+  allTasks: [Task]
+}
+
+type Mutation {
+  addTask(input: AddTaskInput!): Task
+  removeTask(input: RemoveTaskInput!): Task
 }
 
 type Person {
   uuid: ID!
   name: String!
+}
+
+type Task {
+  uuid: ID!
+  description: String
+}
+
+input RemoveTaskInput {
+  uuid: ID!
+}
+
+input AddTaskInput {
+  description: String
 }

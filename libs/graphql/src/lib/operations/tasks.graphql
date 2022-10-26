@@ -1,0 +1,28 @@
+query FindTask($uuid: ID!) {
+  findTask(uuid: $uuid) {
+    ...TaskFields
+  }
+}
+
+query AllTasks {
+  allTasks {
+    ...TaskFields
+  }
+}
+
+mutation RemoveTask($input: RemoveTaskInput!) {
+  removeTask(input: $input) {
+    ...TaskFields
+  }
+}
+
+mutation AddTask($input: AddTaskInput!) {
+  addTask(input: $input) {
+    ...TaskFields
+  }
+}
+
+fragment TaskFields on Task {
+  uuid
+  description
+}

@@ -13,6 +13,26 @@ export type Scalars = {
   Date: any;
 };
 
+export type AddTaskInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  addTask?: Maybe<Task>;
+  removeTask?: Maybe<Task>;
+};
+
+
+export type MutationAddTaskArgs = {
+  input: AddTaskInput;
+};
+
+
+export type MutationRemoveTaskArgs = {
+  input: RemoveTaskInput;
+};
+
 export type Person = {
   __typename?: 'Person';
   name: Scalars['String'];
@@ -21,10 +41,27 @@ export type Person = {
 
 export type Query = {
   __typename?: 'Query';
+  allTasks?: Maybe<Array<Maybe<Task>>>;
+  findTask?: Maybe<Task>;
   person?: Maybe<Person>;
 };
 
 
+export type QueryFindTaskArgs = {
+  uuid: Scalars['ID'];
+};
+
+
 export type QueryPersonArgs = {
+  uuid: Scalars['ID'];
+};
+
+export type RemoveTaskInput = {
+  uuid: Scalars['ID'];
+};
+
+export type Task = {
+  __typename?: 'Task';
+  description?: Maybe<Scalars['String']>;
   uuid: Scalars['ID'];
 };
