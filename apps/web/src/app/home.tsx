@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { environment } from '../environments/environment';
 
 export interface HomeProps {
-  //...
+  thing: any;
 }
 
 export const Home: React.FC<HomeProps> = () => {

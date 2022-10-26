@@ -15,7 +15,7 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={apollo}>
         <StyledApp>
-          <Home />
+          <Home thing={undefined} />
         </StyledApp>
       </ApolloProvider>
     </QueryClientProvider>
