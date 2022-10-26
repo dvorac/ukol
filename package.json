@@ -35,6 +35,7 @@
     "@graphql-codegen/near-operation-file-preset": "^2.4.1",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@graphql-tools/mock": "^8.7.6",
     "@graphql-tools/schema": "^9.0.1",
     "@nrwl/cli": "14.5.4",
     "@nrwl/cypress": "14.5.4",
