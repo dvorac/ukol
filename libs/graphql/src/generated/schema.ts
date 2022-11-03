@@ -13,18 +13,45 @@ export type Scalars = {
   Date: any;
 };
 
-export type Person = {
-  __typename?: 'Person';
-  name: Scalars['String'];
-  uuid: Scalars['ID'];
+export type AddTaskInput = {
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  taskAdd?: Maybe<Task>;
+  taskRemove?: Maybe<Task>;
+  unused?: Maybe<Scalars['String']>;
+};
+
+
+export type MutationTaskAddArgs = {
+  input: AddTaskInput;
+};
+
+
+export type MutationTaskRemoveArgs = {
+  input: RemoveTaskInput;
 };
 
 export type Query = {
   __typename?: 'Query';
-  person?: Maybe<Person>;
+  taskAll?: Maybe<Array<Task>>;
+  taskFind?: Maybe<Task>;
+  unused?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryPersonArgs = {
+export type QueryTaskFindArgs = {
+  uuid: Scalars['ID'];
+};
+
+export type RemoveTaskInput = {
+  uuid: Scalars['ID'];
+};
+
+export type Task = {
+  __typename?: 'Task';
+  description?: Maybe<Scalars['String']>;
   uuid: Scalars['ID'];
 };

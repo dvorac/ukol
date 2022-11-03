@@ -1,0 +1,46 @@
+extend type Query {
+  taskFind(uuid: ID!): Task
+  taskAll: [Task!]
+}
+
+extend type Mutation {
+  taskAdd(input: AddTaskInput!): Task
+  taskRemove(input: RemoveTaskInput!): Task
+}
+
+input RemoveTaskInput {
+  uuid: ID!
+}
+
+input AddTaskInput {
+  description: String
+}
+
+query FindTask($uuid: ID!) {
+  taskFind(uuid: $uuid) {
+    ...TaskFields
+  }
+}
+
+query AllTasks {
+  taskAll {
+    ...TaskFields
+  }
+}
+
+mutation RemoveTask($input: RemoveTaskInput!) {
+  taskRemove(input: $input) {
+    ...TaskFields
+  }
+}
+
+mutation AddTask($input: AddTaskInput!) {
+  taskAdd(input: $input) {
+    ...TaskFields
+  }
+}
+
+fragment TaskFields on Task {
+  uuid
+  description
+}

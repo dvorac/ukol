@@ -1,41 +1,32 @@
-import { useFindPersonQuery } from '@ukol/graphql'
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
-import { environment } from '../environments/environment';
+import { useAllTasksQuery } from '@ukol/graphql';
+import { AddTask } from './tasks/add-task';
+import { TaskList } from './tasks/list';
 
 export interface HomeProps {
-  thing: any;
+  unused?: string
 }
 
 export const Home: React.FC<HomeProps> = () => {
-  const [ id, setId ] = useState('');
+  const { data, loading, error, refetch } = useAllTasksQuery();
 
-  // fetch data
-  const { data, loading, error } = useFindPersonQuery({
-    variables: { uuid: id }
-  });
+  if (loading) {
+    return (<div>Loading...</div>)
+  };
 
-  const { data: apiData, error: apiError, isLoading: apiLoading } = useQuery(['api'], () =>
-    fetch(environment.api).then(res => res.json())
-  );
+  if (error) {
+    return (<div>{`Error: ${error}`}</div>)
+  };
+
+  const tasks = data?.taskAll || [];
 
   return (
     <>
-      <form>
-        <input type='text' value={id} onChange={(e) => setId(e.target.value)}/>
-      </form>
-      <div>
-        <p>GQL</p>
-        <p>data: {JSON.stringify(data?.person)}</p>
-        <p>loading: {loading}</p>
-        <p>error: {JSON.stringify(error)}</p>
-      </div>
-      <div>
-        <p>API</p>
-        <p>data: {JSON.stringify(apiData)}</p>
-        <p>loading: {apiLoading}</p>
-        <p>error: {JSON.stringify(apiError)}</p>
-      </div>
+      <TaskList tasks={tasks} onRemoveTask={
+        () => refetch()
+      }/>
+      <AddTask onAddTask={
+        () => refetch()
+      }/>
     </>
-  )
+  );
 }
