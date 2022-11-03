@@ -1,5 +1,7 @@
 overwrite: true
-schema: libs/graphql/src/schema.graphql
+schema:
+  - libs/graphql/src/schema.graphql
+  - libs/graphql/src/lib/operations/**/*.graphql
 generates:
 
   #

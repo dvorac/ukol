@@ -19,40 +19,30 @@ export type AddTaskInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addTask?: Maybe<Task>;
-  removeTask?: Maybe<Task>;
+  taskAdd?: Maybe<Task>;
+  taskRemove?: Maybe<Task>;
+  unused?: Maybe<Scalars['String']>;
 };
 
 
-export type MutationAddTaskArgs = {
+export type MutationTaskAddArgs = {
   input: AddTaskInput;
 };
 
 
-export type MutationRemoveTaskArgs = {
+export type MutationTaskRemoveArgs = {
   input: RemoveTaskInput;
-};
-
-export type Person = {
-  __typename?: 'Person';
-  name: Scalars['String'];
-  uuid: Scalars['ID'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  allTasks?: Maybe<Array<Maybe<Task>>>;
-  findTask?: Maybe<Task>;
-  person?: Maybe<Person>;
+  taskAll?: Maybe<Array<Task>>;
+  taskFind?: Maybe<Task>;
+  unused?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryFindTaskArgs = {
-  uuid: Scalars['ID'];
-};
-
-
-export type QueryPersonArgs = {
+export type QueryTaskFindArgs = {
   uuid: Scalars['ID'];
 };
 

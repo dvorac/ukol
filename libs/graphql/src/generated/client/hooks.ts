@@ -3,56 +3,15 @@ import * as Operations from 'libs/graphql/src/generated/client/operations';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
-export const PersonFieldsFragmentDoc = gql`
-    fragment PersonFields on Person {
-  uuid
-  name
-}
-    `;
 export const TaskFieldsFragmentDoc = gql`
     fragment TaskFields on Task {
   uuid
   description
 }
     `;
-export const FindPersonDocument = gql`
-    query findPerson($uuid: ID!) {
-  person(uuid: $uuid) {
-    ...PersonFields
-  }
-}
-    ${PersonFieldsFragmentDoc}`;
-
-/**
- * __useFindPersonQuery__
- *
- * To run a query within a React component, call `useFindPersonQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindPersonQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindPersonQuery({
- *   variables: {
- *      uuid: // value for 'uuid'
- *   },
- * });
- */
-export function useFindPersonQuery(baseOptions: Apollo.QueryHookOptions<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>(FindPersonDocument, options);
-      }
-export function useFindPersonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>(FindPersonDocument, options);
-        }
-export type FindPersonQueryHookResult = ReturnType<typeof useFindPersonQuery>;
-export type FindPersonLazyQueryHookResult = ReturnType<typeof useFindPersonLazyQuery>;
-export type FindPersonQueryResult = Apollo.QueryResult<Operations.FindPersonQuery, Operations.FindPersonQueryVariables>;
 export const FindTaskDocument = gql`
     query FindTask($uuid: ID!) {
-  findTask(uuid: $uuid) {
+  taskFind(uuid: $uuid) {
     ...TaskFields
   }
 }
@@ -87,7 +46,7 @@ export type FindTaskLazyQueryHookResult = ReturnType<typeof useFindTaskLazyQuery
 export type FindTaskQueryResult = Apollo.QueryResult<Operations.FindTaskQuery, Operations.FindTaskQueryVariables>;
 export const AllTasksDocument = gql`
     query AllTasks {
-  allTasks {
+  taskAll {
     ...TaskFields
   }
 }
@@ -121,7 +80,7 @@ export type AllTasksLazyQueryHookResult = ReturnType<typeof useAllTasksLazyQuery
 export type AllTasksQueryResult = Apollo.QueryResult<Operations.AllTasksQuery, Operations.AllTasksQueryVariables>;
 export const RemoveTaskDocument = gql`
     mutation RemoveTask($input: RemoveTaskInput!) {
-  removeTask(input: $input) {
+  taskRemove(input: $input) {
     ...TaskFields
   }
 }
@@ -154,7 +113,7 @@ export type RemoveTaskMutationResult = Apollo.MutationResult<Operations.RemoveTa
 export type RemoveTaskMutationOptions = Apollo.BaseMutationOptions<Operations.RemoveTaskMutation, Operations.RemoveTaskMutationVariables>;
 export const AddTaskDocument = gql`
     mutation AddTask($input: AddTaskInput!) {
-  addTask(input: $input) {
+  taskAdd(input: $input) {
     ...TaskFields
   }
 }

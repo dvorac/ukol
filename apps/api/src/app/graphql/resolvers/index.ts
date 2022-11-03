@@ -1,9 +1,12 @@
-import personQueries from './person';
+import { taskQueries, taskMutations} from './tasks';
 
 const resolvers = {
   Query: {
-    ...personQueries,
+    ...taskQueries,
   },
+  Mutation: {
+    ...taskMutations,
+  }
 };
 
 export default resolvers;

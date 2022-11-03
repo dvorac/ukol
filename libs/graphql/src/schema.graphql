@@ -6,30 +6,20 @@ schema {
 }
 
 type Query {
-  person(uuid: ID!): Person
-  findTask(uuid: ID!): Task
-  allTasks: [Task]
+  # !! Do not specify queries here !!
+  # Instead, extend the Query type from domain-specific operation files.
+  unused: String
 }
 
 type Mutation {
-  addTask(input: AddTaskInput!): Task
-  removeTask(input: RemoveTaskInput!): Task
+  # !! Do not specify mutations here !!
+  # Instead, extend the Mutation type from domain-specific operation files.
+  unused: String
 }
 
-type Person {
-  uuid: ID!
-  name: String!
-}
+# === common object types should be listed here ===
 
 type Task {
   uuid: ID!
-  description: String
-}
-
-input RemoveTaskInput {
-  uuid: ID!
-}
-
-input AddTaskInput {
   description: String
 }

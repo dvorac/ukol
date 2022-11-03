@@ -7,19 +7,15 @@ input AddTaskInput {
 scalar Date
 
 type Mutation {
-  addTask(input: AddTaskInput!): Task
-  removeTask(input: RemoveTaskInput!): Task
-}
-
-type Person {
-  name: String!
-  uuid: ID!
+  taskAdd(input: AddTaskInput!): Task
+  taskRemove(input: RemoveTaskInput!): Task
+  unused: String
 }
 
 type Query {
-  allTasks: [Task]
-  findTask(uuid: ID!): Task
-  person(uuid: ID!): Person
+  taskAll: [Task!]
+  taskFind(uuid: ID!): Task
+  unused: String
 }
 
 input RemoveTaskInput {
