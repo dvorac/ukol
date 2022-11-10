@@ -1,7 +1,8 @@
 import gql from 'graphql-tag';
 export const typedefs = gql`
 input AddTaskInput {
-  description: String
+  description: String!
+  priorityId: ID
 }
 
 scalar Date
@@ -12,8 +13,16 @@ type Mutation {
   unused: String
 }
 
+type Priority {
+  description: String!
+  priority: Int
+  uuid: ID!
+}
+
 type Query {
-  taskAll: [Task!]
+  priorityAll: [Priority!]!
+  priorityFind(uuid: ID!): Priority
+  taskAll: [Task!]!
   taskFind(uuid: ID!): Task
   unused: String
 }
@@ -23,7 +32,8 @@ input RemoveTaskInput {
 }
 
 type Task {
-  description: String
+  description: String!
+  priority: Priority
   uuid: ID!
 }
 `

@@ -14,7 +14,8 @@ export type Scalars = {
 };
 
 export type AddTaskInput = {
-  description?: InputMaybe<Scalars['String']>;
+  description: Scalars['String'];
+  priorityId?: InputMaybe<Scalars['ID']>;
 };
 
 export type Mutation = {
@@ -34,11 +35,25 @@ export type MutationTaskRemoveArgs = {
   input: RemoveTaskInput;
 };
 
+export type Priority = {
+  __typename?: 'Priority';
+  description: Scalars['String'];
+  priority?: Maybe<Scalars['Int']>;
+  uuid: Scalars['ID'];
+};
+
 export type Query = {
   __typename?: 'Query';
-  taskAll?: Maybe<Array<Task>>;
+  priorityAll: Array<Priority>;
+  priorityFind?: Maybe<Priority>;
+  taskAll: Array<Task>;
   taskFind?: Maybe<Task>;
   unused?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryPriorityFindArgs = {
+  uuid: Scalars['ID'];
 };
 
 
@@ -52,6 +67,7 @@ export type RemoveTaskInput = {
 
 export type Task = {
   __typename?: 'Task';
-  description?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  priority?: Maybe<Priority>;
   uuid: Scalars['ID'];
 };

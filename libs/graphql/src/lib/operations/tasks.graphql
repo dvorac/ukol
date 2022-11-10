@@ -1,6 +1,6 @@
 extend type Query {
   taskFind(uuid: ID!): Task
-  taskAll: [Task!]
+  taskAll: [Task!]!
 }
 
 extend type Mutation {
@@ -13,7 +13,8 @@ input RemoveTaskInput {
 }
 
 input AddTaskInput {
-  description: String
+  description: String!
+  priorityId: ID
 }
 
 query FindTask($uuid: ID!) {
@@ -43,4 +44,9 @@ mutation AddTask($input: AddTaskInput!) {
 fragment TaskFields on Task {
   uuid
   description
+  priority {
+    uuid
+    description
+    priority
+  }
 }

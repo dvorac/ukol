@@ -1,0 +1,22 @@
+extend type Query {
+  priorityFind(uuid: ID!): Priority
+  priorityAll: [Priority!]!
+}
+
+query FindPriority($uuid: ID!) {
+  priorityFind(uuid: $uuid) {
+    ...PriorityFields
+  }
+}
+
+query AllPriorities {
+  priorityAll {
+    ...PriorityFields
+  }
+}
+
+fragment PriorityFields on Priority {
+  uuid
+  description
+  priority
+}
