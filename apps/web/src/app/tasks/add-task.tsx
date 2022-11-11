@@ -1,9 +1,12 @@
-import { Task, useAddTaskMutation } from '@ukol/graphql';
+import { Priority, Task, useAddTaskMutation } from '@ukol/graphql';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { PrioritySelect } from './select-priority';
 
 export interface AddTaskProps {
-  onAddTask?: (task: Task) => void
+  priorities: Priority[];
+  onAddTask?: (task: Task) => void;
 }
 
 const Spinner = styled.progress`
@@ -13,15 +16,21 @@ const Spinner = styled.progress`
 `
 
 export const AddTask: React.FC<AddTaskProps> = (props) => {
-  const { onAddTask } = props;
+  const { priorities, onAddTask } = props;
   const { handleSubmit, register } = useForm();
+  const [ priority, setPriority ] = useState<string>(priorities[0]?.uuid);
 
-  const [save, { loading }] = useAddTaskMutation();
+  const [ save, { loading } ] = useAddTaskMutation();
 
   const onSubmit = async (form: any) => {
-    console.log(`data`, JSON.stringify(form));
-    const task = await save({ variables: { input: { description: form["desc"] }}});
-    console.log(`task added`, task);
+    const task = await save({
+      variables: {
+        input: {
+          description: form["desc"],
+          priorityId: priority,
+        }
+      }
+    });
     if (onAddTask && task.data?.taskAdd) onAddTask(task.data?.taskAdd);
   };
 
@@ -38,6 +47,11 @@ export const AddTask: React.FC<AddTaskProps> = (props) => {
             required: 'a description is required'
           })}
         />
+        <PrioritySelect
+            priorities={priorities}
+            initialSelected={priority}
+            onChange={uuid => setPriority(uuid)}
+          />
         <button type='submit'>Save</button>
         {loading && <Spinner style={{ margin: '0 0 0 8px' }} />}
       </form>

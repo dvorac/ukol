@@ -10,6 +10,7 @@ scalar Date
 type Mutation {
   taskAdd(input: AddTaskInput!): Task
   taskRemove(input: RemoveTaskInput!): Task
+  taskUpdate(input: UpdateTaskInput!): Task
   unused: String
 }
 
@@ -35,5 +36,11 @@ type Task {
   description: String!
   priority: Priority
   uuid: ID!
+}
+
+input UpdateTaskInput {
+  description: String
+  priorityId: ID
+  uuid: String!
 }
 `

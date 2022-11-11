@@ -225,3 +225,36 @@ export function useAddTaskMutation(baseOptions?: Apollo.MutationHookOptions<Oper
 export type AddTaskMutationHookResult = ReturnType<typeof useAddTaskMutation>;
 export type AddTaskMutationResult = Apollo.MutationResult<Operations.AddTaskMutation>;
 export type AddTaskMutationOptions = Apollo.BaseMutationOptions<Operations.AddTaskMutation, Operations.AddTaskMutationVariables>;
+export const UpdateTaskDocument = gql`
+    mutation UpdateTask($input: UpdateTaskInput!) {
+  taskUpdate(input: $input) {
+    ...TaskFields
+  }
+}
+    ${TaskFieldsFragmentDoc}`;
+export type UpdateTaskMutationFn = Apollo.MutationFunction<Operations.UpdateTaskMutation, Operations.UpdateTaskMutationVariables>;
+
+/**
+ * __useUpdateTaskMutation__
+ *
+ * To run a mutation, you first call `useUpdateTaskMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTaskMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTaskMutation, { data, loading, error }] = useUpdateTaskMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTaskMutation(baseOptions?: Apollo.MutationHookOptions<Operations.UpdateTaskMutation, Operations.UpdateTaskMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Operations.UpdateTaskMutation, Operations.UpdateTaskMutationVariables>(UpdateTaskDocument, options);
+      }
+export type UpdateTaskMutationHookResult = ReturnType<typeof useUpdateTaskMutation>;
+export type UpdateTaskMutationResult = Apollo.MutationResult<Operations.UpdateTaskMutation>;
+export type UpdateTaskMutationOptions = Apollo.BaseMutationOptions<Operations.UpdateTaskMutation, Operations.UpdateTaskMutationVariables>;

@@ -40,4 +40,11 @@ export type AddTaskMutationVariables = Types.Exact<{
 
 export type AddTaskMutation = { __typename?: 'Mutation', taskAdd?: { __typename?: 'Task', uuid: string, description: string, priority?: { __typename?: 'Priority', uuid: string, description: string, priority?: number | null } | null } | null };
 
+export type UpdateTaskMutationVariables = Types.Exact<{
+  input: Types.UpdateTaskInput;
+}>;
+
+
+export type UpdateTaskMutation = { __typename?: 'Mutation', taskUpdate?: { __typename?: 'Task', uuid: string, description: string, priority?: { __typename?: 'Priority', uuid: string, description: string, priority?: number | null } | null } | null };
+
 export type TaskFieldsFragment = { __typename?: 'Task', uuid: string, description: string, priority?: { __typename?: 'Priority', uuid: string, description: string, priority?: number | null } | null };

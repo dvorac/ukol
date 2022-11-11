@@ -1,9 +1,13 @@
-import { Task, useRemoveTaskMutation } from "@ukol/graphql";
+import { Priority, Task, UpdateTaskInput, useRemoveTaskMutation } from "@ukol/graphql";
 import styled from "styled-components";
+import { byPriority, comparePriority } from "../priority/sort";
+import { PrioritySelect } from "./select-priority";
 
 export interface TaskListProps {
-  tasks: Task[],
-  onRemoveTask?: (task: Task) => void
+  tasks: Task[];
+  priorities: Priority[];
+  onRemoveTask?: (task: Task) => void;
+  onUpdateTask?: (updates: UpdateTaskInput) => void;
 }
 
 const Item = styled.li`
@@ -17,20 +21,44 @@ const Item = styled.li`
 `
 
 export const TaskList: React.FC<TaskListProps> = (props) => {
-  const { tasks, onRemoveTask } = props;
+  const { tasks, priorities, onRemoveTask, onUpdateTask } = props;
+
+  const ordered = tasks.slice().sort(
+    (a,b) => comparePriority(a.priority, b.priority)
+  );
 
   const [remove] = useRemoveTaskMutation();
 
   const onClickRemove = async (task: Task) => {
-    const deleted = await remove({ variables: { input: { uuid: task.uuid }}});
-    if (onRemoveTask && deleted.data?.taskRemove) onRemoveTask(deleted.data.taskRemove);
+    const deleted = await remove({
+      variables: {
+        input: {
+          uuid: task.uuid
+        }
+      }
+    });
+    if (onRemoveTask && deleted.data?.taskRemove) {
+      onRemoveTask(deleted.data.taskRemove);
+    }
+  }
+
+  const onChangePriority = (t: Task) => (priorityUuid: string) => {
+    if (onUpdateTask) onUpdateTask({
+      uuid: t.uuid,
+      priorityId: priorityUuid
+    });
   }
 
   return (
     <ol>
-      {tasks.map(t => (
-        <Item>
+      {ordered.map(t => (
+        <Item key={t.uuid}>
           <span className="description">{t.description}</span>
+          <PrioritySelect
+            priorities={priorities}
+            initialSelected={t.priority?.uuid}
+            onChange={onChangePriority(t)}
+          />
           <button className='remove' onClick={() => onClickRemove(t)}>Remove</button>
         </Item>
       ))}

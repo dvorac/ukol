@@ -22,6 +22,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   taskAdd?: Maybe<Task>;
   taskRemove?: Maybe<Task>;
+  taskUpdate?: Maybe<Task>;
   unused?: Maybe<Scalars['String']>;
 };
 
@@ -33,6 +34,11 @@ export type MutationTaskAddArgs = {
 
 export type MutationTaskRemoveArgs = {
   input: RemoveTaskInput;
+};
+
+
+export type MutationTaskUpdateArgs = {
+  input: UpdateTaskInput;
 };
 
 export type Priority = {
@@ -70,4 +76,10 @@ export type Task = {
   description: Scalars['String'];
   priority?: Maybe<Priority>;
   uuid: Scalars['ID'];
+};
+
+export type UpdateTaskInput = {
+  description?: InputMaybe<Scalars['String']>;
+  priorityId?: InputMaybe<Scalars['ID']>;
+  uuid: Scalars['String'];
 };
