@@ -21,5 +21,12 @@ type Mutation {
 
 type Task {
   uuid: ID!
-  description: String
+  description: String!
+  priority: Priority
+}
+
+type Priority {
+  uuid: ID!
+  description: String!
+  priority: Int
 }

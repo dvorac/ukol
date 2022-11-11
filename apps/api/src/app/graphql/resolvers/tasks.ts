@@ -4,37 +4,43 @@ import { v4 as uuid } from 'uuid';
 
 export const taskQueries = {
   taskFind: async (parent, args, context: Context, info) => {
-    // fetch
     const model = await context.prisma.task.findFirst({
-      where: { uuid: args.uuid }
+      where: { uuid: args.uuid },
+      include: { priority: true },
     });
 
-    // transpose db model to graphql model
     const gql: Task = {
-      uuid: model.uuid,
-      description: model.description,
+      ...model
     };
 
     return gql;
   },
   taskAll: async (parent, args, context: Context, info) => {
     const models = await context.prisma.task.findMany({
-      // future search params may go here
+      include: { priority: true },
     });
 
-    return models.map(m => ({
-      uuid: m.uuid,
-      description: m.description
+    return models.map(model => ({
+      ...model
     }) as Task);
-  }
+  },
 };
 
 export const taskMutations = {
   taskAdd: async (parent, args, context: Context, info) => {
+    const { description, priorityId } = args.input;
     const task = await context.prisma.task.create({
       data: {
         uuid: uuid(),
-        description: args.input.description
+        description: description,
+        priority: {
+          connect: {
+            uuid: priorityId
+          }
+        }
+      },
+      include: {
+        priority: true
       }
     });
 
@@ -48,5 +54,25 @@ export const taskMutations = {
 
     console.log(`deleted task: `, task);
     return task;
-  }
+  },
+  taskUpdate: async (parent, args, context: Context, info) => {
+    const { uuid, description, priorityId } = args.input;
+    const task = await context.prisma.task.update({
+      where: { uuid: uuid },
+      data: {
+        description: description,
+        priority: {
+          connect: {
+            uuid: priorityId
+          }
+        }
+      },
+      include: {
+        priority: true
+      }
+    });
+
+    console.log(`update task: `, task);
+    return task;
+  },
 }

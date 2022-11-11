@@ -1,5 +1,5 @@
 import apollo from './apollo';
-import { Home } from './home';
+import { Home } from './home/home';
 import { ApolloProvider } from '@apollo/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 

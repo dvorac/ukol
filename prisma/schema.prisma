@@ -11,7 +11,17 @@ datasource db {
 }
 
 model Task {
-  id          Int     @id @default(autoincrement())
-  uuid        String  @unique
+  id          Int       @id @default(autoincrement())
+  uuid        String    @unique
   description String
+  priority    Priority? @relation(fields: [priorityId], references: [id])
+  priorityId  Int?
+}
+
+model Priority {
+  id          Int       @id @default(autoincrement())
+  uuid        String    @unique
+  description String
+  priority    Int       @unique
+  tasks       Task[]
 }

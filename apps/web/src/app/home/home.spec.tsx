@@ -37,7 +37,7 @@ const testRender = (
 describe('App', () => {
 
   it('should render successfully', () => {
-    const component = testRender(<Home thing={undefined} />, { mocks: {
+    const component = testRender(<Home />, { mocks: {
       Person: () => ({ uuid: "1234", name: "Todd" })
     }});
 
