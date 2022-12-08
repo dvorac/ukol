@@ -1,5 +1,12 @@
--- AlterTable
-ALTER TABLE "Task" ADD COLUMN     "priorityId" INTEGER DEFAULT 0;
+-- CreateTable
+CREATE TABLE "Task" (
+    "id" SERIAL NOT NULL,
+    "uuid" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "priorityId" INTEGER,
+
+    CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Priority" (
@@ -10,6 +17,9 @@ CREATE TABLE "Priority" (
 
     CONSTRAINT "Priority_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Task_uuid_key" ON "Task"("uuid");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Priority_uuid_key" ON "Priority"("uuid");
