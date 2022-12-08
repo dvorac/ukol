@@ -8,7 +8,8 @@
     "test": "nx test"
   },
   "prisma": {
-    "seed": "ts-node --transpile-only prisma/seed.ts"
+    "schema": "libs/model/src/lib/schema.prisma",
+    "seed": "ts-node --transpile-only libs/model/src/lib/seed.ts"
   },
   "private": true,
   "dependencies": {

@@ -4,6 +4,7 @@
   "projects": {
     "api": "apps/api",
     "graphql": "libs/graphql",
+    "model": "libs/model",
     "web": "apps/web"
   }
 }
