@@ -1,27 +1,32 @@
 import { Priority } from '@ukol/graphql';
-import { Context } from '../context';
+import { Priority as PriorityModel } from '@ukol/data';
 
 export const priorityQueries = {
-  priorityFind: async (parent, args, context: Context, info) => {
+  priorityFind: async (parent, args, context, info): Promise<Priority> => {
     // fetch
-    const model = await context.prisma.priority.findFirst({
-      where: { uuid: args.uuid }
-    });
+    const result = await PriorityModel.query()
+      .select('uuid', 'description', 'priority')
+      .where('uuid', args.uuid)
+
+    const model = result[0];
 
     // transpose db model to graphql model
-    const gql: Priority = {
-      ...model,
+    return {
+      uuid: model.uuid,
+      description: model.description,
+      priority: model.priority,
     };
-
-    return gql;
   },
-  priorityAll: async (parent, args, context: Context, info) => {
-    const models = await context.prisma.priority.findMany({
-      // future search params may go here
-    });
+  priorityAll: async (parent, args, context, info): Promise<Priority[]> => {
+    const result = await PriorityModel.query()
+      .select('uuid', 'description', 'priority');
+
+    const models = result;
 
     return models.map(model => ({
-      ...model
-    }) as Priority);
+      uuid: model.uuid,
+      description: model.description,
+      priority: model.priority,
+    }));
   }
 }

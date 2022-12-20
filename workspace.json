@@ -3,8 +3,8 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "data": "libs/data",
     "graphql": "libs/graphql",
-    "model": "libs/model",
     "web": "apps/web"
   }
 }
