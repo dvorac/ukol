@@ -1,14 +1,12 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express';
 import { startApolloServer } from './app/graphql';
 import { environment } from './environments/environment';
 import * as cors from 'cors';
 import * as morgan from 'morgan';
 import * as http from 'http';
+import knexConfig from './app/config/knexfile';
+import Knex from 'knex';
+import { Model } from 'objection'
 
 /**
  * App entry point for express/apollo server.
@@ -17,6 +15,10 @@ import * as http from 'http';
  * - https://www.apollographql.com/docs/apollo-server/integrations/middleware
  */
 const main = async () => {
+  // establish db connection
+  const knex = Knex(knexConfig);
+  Model.knex(knex);
+
   // init express
   const app = express();
 
