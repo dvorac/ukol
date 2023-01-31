@@ -27,7 +27,7 @@ export const AddTask: React.FC<AddTaskProps> = (props) => {
       variables: {
         input: {
           description: form["desc"],
-          priorityId: priority,
+          priorityUuid: priority,
         }
       }
     });

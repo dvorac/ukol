@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ukol/graphql": ["libs/graphql/src/index.ts"],
-      "@ukol/model": ["libs/model/src/index.ts"]
+      "@ukol/data": ["libs/data/src/index.ts"],
+      "@ukol/graphql": ["libs/graphql/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

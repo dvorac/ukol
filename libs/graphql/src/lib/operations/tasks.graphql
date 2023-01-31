@@ -15,13 +15,13 @@ input RemoveTaskInput {
 
 input AddTaskInput {
   description: String!
-  priorityId: ID
+  priorityUuid: ID
 }
 
 input UpdateTaskInput {
   uuid: String!
   description: String
-  priorityId: ID
+  priorityUuid: ID
 }
 
 query FindTask($uuid: ID!) {

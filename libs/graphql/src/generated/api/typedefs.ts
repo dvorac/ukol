@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 export const typedefs = gql`
 input AddTaskInput {
   description: String!
-  priorityId: ID
+  priorityUuid: ID
 }
 
 scalar Date
@@ -40,7 +40,7 @@ type Task {
 
 input UpdateTaskInput {
   description: String
-  priorityId: ID
+  priorityUuid: ID
   uuid: String!
 }
 `

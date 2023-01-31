@@ -4,21 +4,27 @@ import { byPriority } from "../priority/sort";
 
 export interface PrioritySelectProps {
   priorities: Priority[];
-  initialSelected?: string;
+  initialSelected?: string | undefined;
   onChange?: (priorityUuid: string) => void;
+}
+
+const createOptions = (priorities: Priority[]) => {
+  const sorted = priorities
+    .slice()
+    .sort(byPriority());
+
+  const opt = sorted
+    .map(p => ({ key: p.uuid, value: p.uuid, text: p.description }))
+
+  return opt;
 }
 
 export const PrioritySelect: React.FC<PrioritySelectProps> = (props) => {
   const { priorities, initialSelected, onChange } = props;
   const [ selected, setSelected ] = useState(initialSelected);
 
-  const options = (priorities: Priority[], selected: string | undefined) => {
-    const options = priorities.slice().sort(byPriority());
-    if (!selected) {
-      options.unshift({ uuid: '', description: '--N/A--' })
-    }
-    return options;
-  }
+  const options = createOptions(priorities);
+  const unknown = priorities.find(p => p.description === 'unknown')?.uuid;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
@@ -27,11 +33,11 @@ export const PrioritySelect: React.FC<PrioritySelectProps> = (props) => {
 
   return (
     <select
-      value={selected}
-      onChange={handleChange}>
-      {options(priorities, selected).map(p => (
-        <option key={p.uuid} value={p.uuid}>{p.description}</option>
-      ))}
+      value={selected ?? unknown}
+      onChange={(e) => handleChange(e)}>
+        {options.map(o => (
+          <option key={o.key} value={o.value}>{o.text}</option>
+        ))}
     </select>
   )
 }
