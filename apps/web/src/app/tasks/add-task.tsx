@@ -23,7 +23,6 @@ export const AddTask: React.FC<AddTaskProps> = (props) => {
   const [ save, { loading } ] = useAddTaskMutation();
 
   const onSubmit = async (form: any) => {
-    console.log(`submit`, priority)
     const task = await save({
       variables: {
         input: {

@@ -1,6 +1,6 @@
 import { Priority, Task, UpdateTaskInput, useRemoveTaskMutation } from "@ukol/graphql";
 import styled from "styled-components";
-import { byPriority, comparePriority } from "../priority/sort";
+import { comparePriority } from "../priority/sort";
 import { PrioritySelect } from "./select-priority";
 
 export interface TaskListProps {
@@ -43,7 +43,6 @@ export const TaskList: React.FC<TaskListProps> = (props) => {
   }
 
   const onChangePriority = (t: Task) => (priorityUuid: string) => {
-    console.log(`onchangeprior`, t, priorityUuid);
     if (onUpdateTask) onUpdateTask({
       uuid: t.uuid,
       priorityUuid: priorityUuid

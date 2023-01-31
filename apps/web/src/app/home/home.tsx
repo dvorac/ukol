@@ -12,7 +12,6 @@ export const Home: React.FC<HomeProps> = () => {
   const [ update ] = useUpdateTaskMutation();
 
   const onUpdateTask = async (updates: UpdateTaskInput) => {
-    console.log(`update`);
     const task = await update({
       variables: {
         input: updates
