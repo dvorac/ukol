@@ -31,14 +31,18 @@ export const taskQueries = {
 
 export const taskMutations = {
   taskAdd: async (parent, args, context, info) => {
-    const { description, priorityId } = args.input;
+    const { description, priorityUuid } = args.input;
 
-    const task = await PriorityModel.relatedQuery('tasks')
-      .for(priorityId)
+    const priority = await PriorityModel.query()
+      .findOne({ uuid: priorityUuid });
+
+    const task = await TaskModel.query()
       .insert({
         uuid: uuid(),
-        description: description,
+        description: description
       });
+
+    await task.$relatedQuery('priority').relate(priority);
 
     console.log(`created task: `, task);
     return task;
@@ -46,25 +50,31 @@ export const taskMutations = {
   taskRemove: async (parent, args, context, info) => {
     const { uuid } = args.input;
 
-    const task = await TaskModel.query().deleteById(uuid);
+    const task = await TaskModel.query()
+      .delete()
+      .where('uuid', uuid)
+      .returning('*')
+      .first();
 
     console.log(`deleted task: `, task);
     return task;
   },
   taskUpdate: async (parent, args, context, info) => {
-    const { uuid, description, priorityId } = args.input;
+    const { uuid, description, priorityUuid } = args.input;
 
-    const priority = await PriorityModel.query().findById(priorityId);
-    const task = await TaskModel.query()
-      .where('uuid', uuid)
-      .patch({
-        description: description,
+    const priority = await PriorityModel.query()
+      .findOne({ uuid: priorityUuid });
+
+    const query = TaskModel.query().where('uuid', uuid);
+    if (description) {
+      query.patch({
+        description
       })
-      .returning("*")
-      .first();
-    task.$relatedQuery('priority').relate(priority);
+    }
+    const task = await query.returning('*').first();
 
-    console.log(`update task: `, task);
+    await task.$relatedQuery('priority').relate(priority);
+
     return task;
   },
 }

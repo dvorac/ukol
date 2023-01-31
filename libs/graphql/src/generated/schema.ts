@@ -15,7 +15,7 @@ export type Scalars = {
 
 export type AddTaskInput = {
   description: Scalars['String'];
-  priorityId?: InputMaybe<Scalars['ID']>;
+  priorityUuid?: InputMaybe<Scalars['ID']>;
 };
 
 export type Mutation = {
@@ -80,6 +80,6 @@ export type Task = {
 
 export type UpdateTaskInput = {
   description?: InputMaybe<Scalars['String']>;
-  priorityId?: InputMaybe<Scalars['ID']>;
+  priorityUuid?: InputMaybe<Scalars['ID']>;
   uuid: Scalars['String'];
 };

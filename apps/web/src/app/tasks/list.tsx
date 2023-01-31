@@ -43,9 +43,10 @@ export const TaskList: React.FC<TaskListProps> = (props) => {
   }
 
   const onChangePriority = (t: Task) => (priorityUuid: string) => {
+    console.log(`onchangeprior`, t, priorityUuid);
     if (onUpdateTask) onUpdateTask({
       uuid: t.uuid,
-      priorityId: priorityUuid
+      priorityUuid: priorityUuid
     });
   }
 

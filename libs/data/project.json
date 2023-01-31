@@ -35,7 +35,7 @@
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": ["ukol/undefined"],
+          "images": ["ukol/data"],
           "load": true,
           "tags": [
             "type=schedule",

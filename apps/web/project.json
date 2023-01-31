@@ -81,7 +81,7 @@
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": ["ukol/undefined"],
+          "images": ["ukol/web"],
           "load": true,
           "tags": [
             "type=schedule",

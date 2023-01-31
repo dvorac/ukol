@@ -9,7 +9,7 @@ export class Priority extends Model {
   uuid!: string;
   description: string | undefined;
   priority!: number;
-  tasks?: Task[];
+  tasks: Task[] | undefined;
 
   static relationMappings = () => ({
     tasks: {
