@@ -3,8 +3,7 @@ name: Ukol SDLC - Pull Request
 on:
   push:
     branches:
-      - '*'
-      - '!main'
+      - 'disable'
 
 jobs:
   # the name here is important; github repo settings are watching for this

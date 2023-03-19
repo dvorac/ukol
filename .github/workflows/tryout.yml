@@ -1,0 +1,56 @@
+name: Ukol SDLC - Tryout
+
+on:
+  push:
+    branches:
+      - '45-deploy-app-with-terraform'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    env:
+      AWS_REGION: us-east-1
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: nx affected history
+        uses: nrwl/nx-set-shas@v3
+
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+
+      - name: build and checks
+        run: |
+          yarn nx run-many --target=build --parallel=2
+          yarn nx run-many --target=lint --parallel=2
+          yarn nx run-many --target=test --parallel=2
+
+      - name: aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::115183919983:role/GithubActionsRole
+          role-session-name: ukol-tryout
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: aws ecr login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: publish docker
+        id: publish-docker
+        env:
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # see https://github.com/gperdomor/nx-tools/issues/619
+          INPUT_PUSH: true
+          INPUT_DATA_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-migrate
+          INPUT_DATA_TAGS: latest
+          INPUT_API_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-api
+          INPUT_API_TAGS: latest
+        run: yarn nx run-many --target=container --projects=api,data
