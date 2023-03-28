@@ -40,3 +40,7 @@ resource "aws_s3_bucket_policy" "www" {
     ]
   })
 }
+
+output "aws_bucket" {
+  value = aws_s3_bucket.www.bucket
+}

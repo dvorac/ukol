@@ -60,3 +60,7 @@ resource "aws_cloudfront_distribution" "distribution" {
     }
   }
 }
+
+output "aws_cloudfront_distribution" {
+  value = aws_cloudfront_distribution.distribution.id
+}
