@@ -53,4 +53,6 @@ jobs:
           INPUT_DATA_TAGS: latest
           INPUT_API_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-api
           INPUT_API_TAGS: latest
-        run: yarn nx run-many --target=container --projects=api,data
+          INPUT_API_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-web
+          INPUT_API_TAGS: latest
+        run: yarn nx run-many --target=container --projects=api,data,web

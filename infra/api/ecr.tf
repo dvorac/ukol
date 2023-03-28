@@ -1,3 +1,3 @@
 data "aws_ecr_repository" "api" {
-  name = "dvorac-ukol"
+  name = "dvorac-ukol-api"
 }
