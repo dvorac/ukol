@@ -1,12 +1,3 @@
-resource "aws_ecs_cluster" "ecs" {
-  name = "ukol-cluster"
-}
-
-variable "image" {
-  type = string
-  default = "image"
-}
-
 # see also https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition
 # see also https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html
 resource "aws_ecs_task_definition" "launch" {
@@ -20,7 +11,7 @@ resource "aws_ecs_task_definition" "launch" {
   container_definitions = jsonencode([
     {
       name = "api-container"
-      image = "${data.aws_ecr_repository.repo.repository_url}"
+      image = "${data.aws_ecr_repository.api.repository_url}"
       cpu = 256
       memory = 1024
       essential = true
@@ -72,8 +63,4 @@ resource "aws_ecs_service" "launch" {
   depends_on = [
     aws_lb_listener.lb
   ]
-}
-
-resource "aws_cloudwatch_log_group" "ecs_logs" {
-  name = "/ecs/ukol"
 }

@@ -1,5 +1,5 @@
-resource "aws_lb" "api_lb" {
-  name = "ukol-api-lb"
+resource "aws_lb" "lb" {
+  name = "ukol-lb"
   subnets = aws_subnet.public[*].id
   security_groups = [ aws_security_group.lb.id ]
 }

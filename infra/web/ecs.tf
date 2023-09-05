@@ -1,5 +1,5 @@
-resource "aws_ecs_task_definition" "migrate" {
-  family = "migrate"
+resource "aws_ecs_task_definition" "web" {
+  family = "web"
 
   requires_compatibilities = [ "FARGATE" ]
   cpu = "256" # 0.25 vCPU
@@ -8,8 +8,8 @@ resource "aws_ecs_task_definition" "migrate" {
 
   container_definitions = jsonencode([
     {
-      name = "db-migrate"
-      image = "${data.aws_ecr_repository.migrate.repository_url}"
+      name = "web-container"
+      image = "${data.aws_ecr_repository.web.repository_url}"
       cpu = 256
       memory = 1024
       essential = false
@@ -23,8 +23,12 @@ resource "aws_ecs_task_definition" "migrate" {
       },
       environment = [
         {
-          name = "DB_CONNECTION_STRING",
-          value = "postgres://${var.db_username}:${var.db_password}@${aws_db_instance.db.endpoint}"
+          name = "GQL",
+          value = "=https://localhost:3333/graphql"
+        },
+        {
+          name = "API",
+          value = "http://localhost:3333/api"
         }
       ]
     }

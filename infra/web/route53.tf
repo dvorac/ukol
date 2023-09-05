@@ -1,3 +1,7 @@
+variable "web_subdomain" {
+  default = "ukol"
+}
+
 data "aws_route53_zone" "domain" {
   provider = aws
   name     = "${var.apex_domain}."
@@ -5,7 +9,7 @@ data "aws_route53_zone" "domain" {
 
 resource "aws_route53_record" "ipv4" {
   zone_id = data.aws_route53_zone.domain.zone_id
-  name    = "${sub_domain}.${var.apex_domain}"
+  name    = "${web_subdomain}.${var.apex_domain}"
   type    = "A"
 
   alias {
@@ -17,7 +21,7 @@ resource "aws_route53_record" "ipv4" {
 
 resource "aws_route53_record" "ipv6" {
   zone_id = data.aws_route53_zone.domain.zone_id
-  name    = "${sub_domain}.${var.apex_domain}"
+  name    = "${web_subdomain}.${var.apex_domain}"
   type    = "AAAA"
 
   alias {
