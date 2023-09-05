@@ -14,10 +14,6 @@ variable "apex_domain" {
   default = "dustinvorac.com"
 }
 
-variable "sub_domain" {
-  default = "ukol"
-}
-
 variable "vpc_cidr" {
   type = string
   default = "10.0.0.0/16"
@@ -45,4 +41,9 @@ variable "db_username" {
 
 variable "db_password" {
   default = "postgres"
+}
+
+variable "image" {
+  type = string
+  default = "image"
 }

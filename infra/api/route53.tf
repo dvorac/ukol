@@ -1,3 +1,7 @@
+variable "api_subdomain" {
+  default = "ukol-api"
+}
+
 data "aws_route53_zone" "domain" {
   provider = aws
   name     = "${var.apex_domain}."
@@ -5,7 +9,7 @@ data "aws_route53_zone" "domain" {
 
 resource "aws_route53_record" "ipv4" {
   zone_id = data.aws_route53_zone.domain.zone_id
-  name    = "ukol-api.${var.apex_domain}"
+  name    = "${var.api_subdomain}.${var.apex_domain}"
   type    = "A"
 
   alias {
