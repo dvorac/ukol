@@ -24,8 +24,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   price_class         = "PriceClass_100"
 
   aliases = [
-    var.apex_domain,
-    "www.${var.apex_domain}"
+    "${var.web_subdomain}.${var.apex_domain}"
   ]
 
   default_cache_behavior {

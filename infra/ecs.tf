@@ -1,7 +1,7 @@
-resource "aws_ecs_cluster" "ecs" {
+resource "aws_ecs_cluster" "cluster" {
   name = "ukol-cluster"
 }
 
-resource "aws_cloudwatch_log_group" "ecs_logs" {
+resource "aws_cloudwatch_log_group" "logs" {
   name = "/ecs/ukol"
 }

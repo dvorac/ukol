@@ -1,6 +1,6 @@
 # see also https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition
 # see also https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html
-resource "aws_ecs_task_definition" "launch" {
+resource "aws_ecs_task_definition" "app" {
   family = "launch"
 
   requires_compatibilities = [ "FARGATE" ]
@@ -17,8 +17,8 @@ resource "aws_ecs_task_definition" "launch" {
       essential = true
       portMappings = [
         {
-          containerPort = 3333
-          hostPort = 3333
+          containerPort = "${locals.app.container_port}"
+          hostPort = "${locals.app.container_port}"
         }
       ],
       logConfiguration = {
@@ -41,26 +41,29 @@ resource "aws_ecs_task_definition" "launch" {
   execution_role_arn = aws_iam_role.execution.arn
 }
 
-resource "aws_ecs_service" "launch" {
+resource "aws_ecs_service" "app" {
   name = "api-service"
-  cluster = aws_ecs_cluster.ecs.id
-  task_definition = aws_ecs_task_definition.launch.arn
+  cluster = aws_ecs_cluster.cluster.id
+  task_definition = aws_ecs_task_definition.app.arn
   launch_type = "FARGATE"
-  desired_count = 2
+  desired_count = 1
 
   network_configuration {
-    assign_public_ip = true
-    security_groups = [ aws_security_group.ecs.id ]
-    subnets = aws_subnet.public[*].id
+    security_groups = [module.vpc.default_security_group_id]
+    subnets = module.vpc.private_subnets
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.lb.id
-    container_name = "api-container"
-    container_port = 3333
+    target_group_arn = module.app_alb.target_group_arns[0]
+    container_name = locals.app.container_name
+    container_port = locals.app.container_port
+  }
+
+  lifecycle {
+    ignore_changes = [desired_count] # Allow external changes to happen without Terraform conflicts, particularly around auto-scaling.
   }
 
   depends_on = [
-    aws_lb_listener.lb
+    module.app_alb
   ]
 }
