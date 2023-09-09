@@ -9,8 +9,8 @@ resource "aws_db_instance" "db" {
   storage_type = "gp2"
   allocated_storage = 30
 
-  db_subnet_group_name = aws_db_subnet_group.db.id
-  vpc_security_group_ids =[ aws_security_group.db.id ]
+  db_subnet_group_name = module.vpc.private_subnets.id
+  vpc_security_group_ids = [ module.vpc.default_security_group_id ]
 
   multi_az = false
 
