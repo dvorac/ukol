@@ -1,16 +1,13 @@
 name: Ukol SDLC - Tryout
-
 on:
   push:
     branches:
       - '45-deploy-app-with-terraform'
-
 env:
   TF_VAR_region: ${{ vars.AWS_REGION }}
   TF_VAR_role: ${{ secrets.AWS_IAM_ROLE }}
   TF_VAR_state_bucket: ${{ vars.AWS_TF_STATE_BUCKET }}
   TF_VAR_state_key: ${{ vars.AWS_TF_STATE_KEY }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,36 +16,29 @@ jobs:
       contents: read  # This is required for actions/checkout
     env:
       AWS_REGION: us-east-1
-
     steps:
       - name: checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - name: nx affected history
         uses: nrwl/nx-set-shas@v3
-
       - name: yarn install
         run: yarn install --frozen-lockfile
-
       - name: build and checks
         run: |
           yarn nx run-many --target=build --parallel=2
           yarn nx run-many --target=lint --parallel=2
           yarn nx run-many --target=test --parallel=2
-
       - name: aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
           role-session-name: ukol-tryout
           aws-region: ${{ vars.AWS_REGION }}
-
       - name: aws ecr login
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-
       - name: publish docker
         id: publish-docker
         env:
@@ -62,39 +52,38 @@ jobs:
           INPUT_WEB_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-web
           INPUT_WEB_TAGS: latest
         run: yarn nx run-many --target=container --projects=api,data,web
-
-terraform:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: infra
-    permissions:
-      id-token: write # required to use OIDC authentication
-      contents: read # required to checkout the code from the repo
-    steps:
-      - name: clone
-        uses: actions/checkout@v3
-      - name: tf setup
-        uses: hashicorp/setup-terraform@v1.2.1
-      - name: aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: ${{ vars.AWS_REGION }}
-          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
-          role-duration-seconds: 900
-      - name: tf init
-        timeout-minutes: 2
-        run: |
-          terraform init \
-              -input=false \
-              -backend=true \
-              -backend-config="region=${{ env.TF_VAR_region }}" \
-              -backend-config="bucket=${{ env.TF_VAR_state_bucket }}" \
-              -backend-config="key=${{ env.TF_VAR_state_key }}" \
-              -reconfigure
-      - name: tf lint
-        run: terraform fmt -check
-      - name: tf plan
-        run: terraform plan -out=terraform.plan
-      - name: tf apply
-        run: terraform apply -auto-approve terraform.plan
+  terraform:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: infra
+      permissions:
+        id-token: write # required to use OIDC authentication
+        contents: read # required to checkout the code from the repo
+      steps:
+        - name: clone
+          uses: actions/checkout@v3
+        - name: tf setup
+          uses: hashicorp/setup-terraform@v1.2.1
+        - name: aws credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-region: ${{ vars.AWS_REGION }}
+            role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+            role-duration-seconds: 900
+        - name: tf init
+          timeout-minutes: 2
+          run: |
+            terraform init \
+                -input=false \
+                -backend=true \
+                -backend-config="region=${{ env.TF_VAR_region }}" \
+                -backend-config="bucket=${{ env.TF_VAR_state_bucket }}" \
+                -backend-config="key=${{ env.TF_VAR_state_key }}" \
+                -reconfigure
+        - name: tf lint
+          run: terraform fmt -check
+        - name: tf plan
+          run: terraform plan -out=terraform.plan
+        - name: tf apply
+          run: terraform apply -auto-approve terraform.plan
