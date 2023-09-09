@@ -24,7 +24,7 @@ resource "aws_ecs_task_definition" "web" {
       environment = [
         {
           name = "GQL",
-          value = "=https://localhost:3333/graphql"
+          value = "https://localhost:3333/graphql"
         },
         {
           name = "API",

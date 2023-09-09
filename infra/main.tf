@@ -1,5 +1,9 @@
-# following https://medium.com/@jerome.decoster/github-actions-hugo-terraform-s3-bc4609cedb1
-# see: https://github.com/jeromedecoster/github-actions-hugo-terraform-s3
+terraform {
+  backend "s3" {
+    # provided by -backend-config flags during "terraform init"
+  }
+}
+
 provider "aws" {
   region = var.region
 
@@ -10,8 +14,10 @@ provider "aws" {
   }
 }
 
-terraform {
-  backend "s3" {
-    # provided by -backend-config flags during "terraform init"
+locals {
+  cluster = "ukol"
+  app = {
+    container_name = "api-container"
+    container_port = 3333
   }
 }
