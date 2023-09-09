@@ -1,46 +1,46 @@
-# see https://github.com/hashicorp/learn-terraform-cloudflare-static-website/blob/020a13f169198de9a991d0922ef23f16a7ee4351/main.tf
-resource "aws_s3_bucket" "www" {
-  bucket        = "${sub_domain}.${var.apex_domain}"
-  force_destroy = true
-}
+# # see https://github.com/hashicorp/learn-terraform-cloudflare-static-website/blob/020a13f169198de9a991d0922ef23f16a7ee4351/main.tf
+# resource "aws_s3_bucket" "www" {
+#   bucket        = "${sub_domain}.${var.apex_domain}"
+#   force_destroy = true
+# }
 
-resource "aws_s3_bucket_website_configuration" "www" {
-  bucket = aws_s3_bucket.www.id
+# resource "aws_s3_bucket_website_configuration" "www" {
+#   bucket = aws_s3_bucket.www.id
 
-  index_document {
-    suffix = "index.html"
-  }
+#   index_document {
+#     suffix = "index.html"
+#   }
 
-  error_document {
-    key = "error.html"
-  }
-}
+#   error_document {
+#     key = "error.html"
+#   }
+# }
 
-resource "aws_s3_bucket_acl" "www" {
-  bucket = aws_s3_bucket.www.id
-  acl    = "public-read"
-}
+# resource "aws_s3_bucket_acl" "www" {
+#   bucket = aws_s3_bucket.www.id
+#   acl    = "public-read"
+# }
 
-resource "aws_s3_bucket_policy" "www" {
-  bucket = aws_s3_bucket.www.id
+# resource "aws_s3_bucket_policy" "www" {
+#   bucket = aws_s3_bucket.www.id
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid       = "PublicReadGetObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource = [
-          aws_s3_bucket.www.arn,
-          "${aws_s3_bucket.www.arn}/*",
-        ]
-      },
-    ]
-  })
-}
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Sid       = "PublicReadGetObject"
+#         Effect    = "Allow"
+#         Principal = "*"
+#         Action    = "s3:GetObject"
+#         Resource = [
+#           aws_s3_bucket.www.arn,
+#           "${aws_s3_bucket.www.arn}/*",
+#         ]
+#       },
+#     ]
+#   })
+# }
 
-output "aws_bucket" {
-  value = aws_s3_bucket.www.bucket
-}
+# output "aws_bucket" {
+#   value = aws_s3_bucket.www.bucket
+# }
