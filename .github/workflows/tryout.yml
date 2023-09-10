@@ -31,7 +31,7 @@ jobs:
           yarn nx run-many --target=lint --parallel=2
           yarn nx run-many --target=test --parallel=2
       - name: aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
           role-session-name: ukol-tryout
@@ -67,7 +67,7 @@ jobs:
         - name: tf setup
           uses: hashicorp/setup-terraform@v1.2.1
         - name: aws credentials
-          uses: aws-actions/configure-aws-credentials@v1
+          uses: aws-actions/configure-aws-credentials@v3
           with:
             aws-region: ${{ vars.AWS_REGION }}
             role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
