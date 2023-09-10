@@ -35,7 +35,6 @@ const main = async () => {
 
   // inject non-graphql endpoints
   app.get('/api', (_, res) => {
-    console.log('blah')
     res.send({ message: 'Welcome to express-app!' });
   });
 
