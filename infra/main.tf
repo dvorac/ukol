@@ -30,3 +30,15 @@ locals {
     container_port = 3333
   }
 }
+
+module "api" {
+  source = "./api"
+}
+
+module "web" {
+  source = "./web"
+}
+
+module "db" {
+  source = "./db"
+}
