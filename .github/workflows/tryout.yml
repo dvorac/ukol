@@ -54,6 +54,7 @@ jobs:
         run: yarn nx run-many --target=container --projects=api,data,web
   terraform:
       runs-on: ubuntu-latest
+      needs: build
       defaults:
         run:
           working-directory: infra
