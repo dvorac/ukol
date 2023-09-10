@@ -88,3 +88,8 @@ jobs:
           run: terraform plan -out=terraform.plan
         # - name: tf apply
         #   run: terraform apply -auto-approve terraform.plan
+        - name: sleep
+          run: sleep 600s
+          shell: bash
+        - name: tf destroy
+          run: terraform destroy

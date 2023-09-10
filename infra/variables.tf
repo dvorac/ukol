@@ -23,6 +23,6 @@ variable "db_password" {
 }
 
 variable "image" {
-  type = string
+  type    = string
   default = "image"
 }
