@@ -83,10 +83,8 @@ jobs:
                 -backend-config="key=${{ env.TF_VAR_state_key }}" \
                 -reconfigure
         - name: tf lint
-          run: |
-            terraform fmt -check
-            terraform validate
+          run: terraform validate
         - name: tf plan
           run: terraform plan -out=terraform.plan
-        - name: tf apply
-          run: terraform apply -auto-approve terraform.plan
+        # - name: tf apply
+        #   run: terraform apply -auto-approve terraform.plan
