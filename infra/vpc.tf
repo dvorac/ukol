@@ -1,14 +1,14 @@
 
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-  version = "~> 3.19.0"
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "~> 5.1.2"
 
-  azs = slice(data.aws_availability_zones.available.names, 0, 2) # Span subnetworks across 2 availibility zones
-  cidr = "10.0.0.0/16"
-  create_igw = true # Expose public subnetworks to the Internet
+  azs                = slice(data.aws_availability_zones.available.names, 0, 2) # Span subnetworks across 2 availability zones
+  cidr               = "10.0.0.0/16"
+  create_igw         = true # Expose public subnetworks to the Internet
   enable_nat_gateway = true # Hide private subnetworks behind NAT Gateway
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets = ["10.0.3.0/24", "10.0.4.0/24"]
+  private_subnets    = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets     = ["10.0.3.0/24", "10.0.4.0/24"]
   single_nat_gateway = true
 }
 
