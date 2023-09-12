@@ -61,8 +61,8 @@ resource "aws_ecs_task_definition" "app" {
       essential = true
       portMappings = [
         {
-          containerPort = "${locals.app.container_port}"
-          hostPort = "${locals.app.container_port}"
+          containerPort = "${local.app.container_port}"
+          hostPort = "${local.app.container_port}"
         }
       ],
       logConfiguration = {
