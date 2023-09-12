@@ -13,3 +13,7 @@ Nested directories necessitate a "module" structure added to the files themselve
 So each module must declare references to other modules, and also declare inputs and outputs to obtain information about other modules.
 
 https://discuss.hashicorp.com/t/splitting-out-main-tf-into-separate-folders/21175/3
+
+## good tutorials
+
+https://section411.com/2019/07/hello-world/
