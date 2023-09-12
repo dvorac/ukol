@@ -44,7 +44,7 @@ resource "aws_ecs_task_definition" "migrate" {
 
 # see also https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition
 # see also https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html
-resource "aws_ecs_task_definition" "app" {
+resource "aws_ecs_task_definition" "api" {
   family = "launch"
 
   requires_compatibilities = [ "FARGATE" ]
@@ -87,10 +87,10 @@ resource "aws_ecs_task_definition" "app" {
 
 # api
 
-resource "aws_ecs_service" "app" {
+resource "aws_ecs_service" "api" {
   name = "api-service"
   cluster = aws_ecs_cluster.cluster.id
-  task_definition = aws_ecs_task_definition.app.arn
+  task_definition = aws_ecs_task_definition.api.arn
   launch_type = "FARGATE"
   desired_count = 1
 
