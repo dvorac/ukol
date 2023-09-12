@@ -92,4 +92,5 @@ jobs:
           run: sleep 600s
           shell: bash
         - name: tf destroy
+          if: always()
           run: terraform destroy
