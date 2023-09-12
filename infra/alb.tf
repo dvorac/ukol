@@ -46,6 +46,10 @@ module "app_alb" {
  ]
 }
 
+output "alb_url" {
+  value = "http://${module.app_alb.lb_dns_name}"
+}
+
 # resource "aws_lb" "api_lb" {
 #   name = "ukol-api-lb"
 #   subnets = aws_subnet.public[*].id
