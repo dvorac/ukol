@@ -101,8 +101,8 @@ resource "aws_ecs_service" "app" {
 
   load_balancer {
     target_group_arn = module.app_alb.target_group_arns[0]
-    container_name = locals.app.container_name
-    container_port = locals.app.container_port
+    container_name = local.app.container_name
+    container_port = local.app.container_port
   }
 
   lifecycle {

@@ -13,8 +13,8 @@ resource "aws_route53_record" "ipv4" {
   type    = "A"
 
   alias {
-    name                   = module.app_alb.dns_name
-    zone_id                = module.app_alb.zone_id
+    name                   = module.app_alb.lb_dns_name
+    zone_id                = module.app_alb.lb_zone_id
     evaluate_target_health = false
   }
 }

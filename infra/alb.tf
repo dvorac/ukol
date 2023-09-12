@@ -3,7 +3,7 @@ module "app_alb" {
  version = "~> 8.4.0"
 
  load_balancer_type = "application"
- security_groups = [module.vpc.default_security_group_id]
+ security_groups = [ module.vpc.default_security_group_id ]
  subnets = module.vpc.public_subnets
  vpc_id = module.vpc.vpc_id
 
@@ -39,7 +39,7 @@ module "app_alb" {
 
  target_groups = [
   {
-   backend_port         = local.container_port
+   backend_port         = local.app.container_port
    backend_protocol     = "HTTP"
    target_type          = "ip"
   }
