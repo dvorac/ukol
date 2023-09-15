@@ -10,7 +10,7 @@ resource "aws_db_instance" "db" {
   allocated_storage = 30
 
   db_subnet_group_name = module.vpc.database_subnet_group_name
-  vpc_security_group_ids = [ module.vpc.default_security_group_id ]
+  vpc_security_group_ids = [ module.vpc.vpc_security_group_ids ]
 
   multi_az = false
 
