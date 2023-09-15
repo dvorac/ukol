@@ -90,7 +90,7 @@ jobs:
           run: terraform apply -auto-approve terraform.plan
         - name: sleep
           run: sleep 600s
-          shell: bash
+          shell: bash 
         - name: tf destroy
           if: always()
-          run: terraform destroy
+          run: terraform destroy -auto-approve
