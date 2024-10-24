@@ -1,0 +1,32 @@
+{
+  "run": {
+    "command": "nx run-many --target=build",
+    "startTime": "2024-10-24T20:41:50.224Z",
+    "endTime": "2024-10-24T20:41:50.688Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "web:build:production",
+      "target": "build",
+      "projectName": "web",
+      "hash": "12325055879445014813",
+      "startTime": "2024-10-24T20:41:50.259Z",
+      "endTime": "2024-10-24T20:41:50.647Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    },
+    {
+      "taskId": "@ukol/data:build",
+      "target": "build",
+      "projectName": "@ukol/data",
+      "hash": "7243062300176090094",
+      "startTime": "2024-10-24T20:41:50.259Z",
+      "endTime": "2024-10-24T20:41:50.685Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

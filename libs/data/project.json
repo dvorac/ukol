@@ -1,12 +1,12 @@
 {
-  "name": "data",
+  "name": "@ukol/data",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/data",
@@ -14,19 +14,22 @@
         "tsConfig": "libs/data/tsconfig.lib.json",
         "assets": ["libs/data/src/db/**/*"],
         "generatePackageJson": true,
-        "buildableProjectDepsInPackageJsonType": "dependencies",
-        "updateBuildableProjectDepsInPackageJson": true
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/data/**/*.ts"]
+      }
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/data"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/data"],
       "options": {
-        "jestConfig": "libs/data/jest.config.ts"
+        "jestConfig": "libs/data/jest.config.ts",
+        "passWithNoTests": true
       }
     },
     "container": {
@@ -47,7 +50,7 @@
       }
     },
     "knex": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/workspace:run-commands",
       "options": {
         "command": "yarn knex --cwd libs/knex-models/src/db"
       }

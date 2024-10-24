@@ -6,18 +6,22 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/graphql/**/*.ts"]
+      }
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/graphql"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/graphql"],
       "options": {
-        "jestConfig": "libs/graphql/jest.config.ts"
+        "jestConfig": "libs/graphql/jest.config.ts",
+        "passWithNoTests": true
       }
     },
     "codegen": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/workspace:run-commands",
       "options": {
         "commands": [
           {
