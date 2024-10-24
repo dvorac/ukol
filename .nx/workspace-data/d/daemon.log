@@ -1,0 +1,135 @@
+[NX Daemon Server] - 2024-10-21T19:14:20.356Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-21T19:14:20.362Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-21T19:14:20.372Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:14:20.373Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-21T19:14:20.375Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:14:20.377Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:14:20.378Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:14:20.378Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-21T19:14:20.379Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-21T19:14:20.380Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-21T19:14:20.380Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-21T19:16:25.431Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-21T19:16:25.437Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-21T19:16:25.442Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:16:25.443Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-21T19:16:25.445Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:16:25.447Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:16:25.448Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:16:25.448Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-21T19:16:25.451Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-21T19:16:25.451Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-21T19:16:25.451Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-21T19:18:49.426Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-21T19:18:49.432Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-21T19:18:49.435Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:18:49.436Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-21T19:18:49.438Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:18:49.440Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:18:49.441Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:18:49.441Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-21T19:18:49.444Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-21T19:18:49.444Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-21T19:18:49.444Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-21T19:19:17.046Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-21T19:19:17.050Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-21T19:19:17.066Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:19:17.066Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-21T19:19:17.074Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-21T19:19:17.075Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:19:17.076Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-21T19:19:17.076Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-21T19:19:17.082Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-21T19:19:17.083Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-21T19:19:17.083Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-22T16:31:21.185Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-22T16:31:21.193Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-22T16:31:21.196Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T16:31:21.197Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-22T16:31:21.199Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T16:31:21.201Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-22T16:31:21.201Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-22T16:31:21.201Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-22T16:31:21.202Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-22T16:31:21.203Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-22T16:31:21.203Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-22T16:32:42.198Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-22T16:32:42.207Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-22T16:32:42.271Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T16:32:42.272Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-22T16:32:42.277Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T16:32:42.279Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-22T16:32:42.280Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-22T16:32:42.280Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-22T16:32:42.282Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-22T16:32:42.282Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-22T16:32:42.283Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-22T18:14:18.540Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-22T18:14:18.545Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-22T18:14:18.549Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T18:14:18.550Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-22T18:14:18.553Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-22T18:14:18.555Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2024-10-22T18:14:18.555Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2024-10-22T18:14:18.556Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-10-22T18:14:18.557Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-22T18:14:18.557Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (sources)
+[NX Daemon Server] - 2024-10-22T18:14:18.557Z - [WATCHER]: Stopping the watcher for /Users/dvorac/projects/ukol (outputs)
+[NX Daemon Server] - 2024-10-24T20:40:11.221Z - Started listening on: /var/folders/lm/dncszgbj1z51ptzbnky5g5bm0000gn/T/a3859e9c191896b616dd/d.sock
+[NX Daemon Server] - 2024-10-24T20:40:11.229Z - [WATCHER]: Subscribed to changes within: /Users/dvorac/projects/ukol (native)
+[NX Daemon Server] - 2024-10-24T20:40:11.233Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-24T20:40:11.234Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-24T20:40:11.238Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-24T20:40:11.240Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-10-24T20:40:12.549Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-10-24T20:40:12.549Z - [REQUEST]: 
+[NX Daemon Server] - 2024-10-24T20:40:12.550Z - [REQUEST]: 
+[NX Daemon Server] - 2024-10-24T20:40:12.566Z - Time taken for 'loadNxPlugins' 1306.0584680000002ms
+
+ NX   Using `implicitDependencies` for global implicit dependencies configuration is no longer supported.
+
+Use "namedInputs" instead. You can run "nx repair" to automatically migrate your configuration.
+For more information about the usage of "namedInputs" see https://nx.dev/deprecated/global-implicit-dependencies#global-implicit-dependencies
+
+[NX Daemon Server] - 2024-10-24T20:40:14.077Z - Time taken for 'build-project-configs' 1491.6763569999998ms
+[NX Daemon Server] - 2024-10-24T20:40:14.139Z - [SYNC]: collect registered sync generators
+[NX Daemon Server] - 2024-10-24T20:40:14.140Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.142Z - Time taken for 'total for creating and serializing project graph' 2899.9244129999997ms
+[NX Daemon Server] - 2024-10-24T20:40:14.145Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.145Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 2900. Response time: 5.
+[NX Daemon Server] - 2024-10-24T20:40:14.152Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-10-24T20:40:14.152Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-10-24T20:40:14.152Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-10-24T20:40:14.154Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-24T20:40:14.394Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-24T20:40:14.394Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-10-24T20:40:14.394Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-10-24T20:40:14.395Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-10-24T20:40:14.395Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.399Z - Time taken for 'total for creating and serializing project graph' 0.2113710000003266ms
+[NX Daemon Server] - 2024-10-24T20:40:14.403Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.403Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 8.
+[NX Daemon Server] - 2024-10-24T20:40:14.408Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-10-24T20:40:14.408Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.411Z - Time taken for 'total for creating and serializing project graph' 0.22137599999996382ms
+[NX Daemon Server] - 2024-10-24T20:40:14.430Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-10-24T20:40:14.430Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 22.
+[NX Daemon Server] - 2024-10-24T20:40:14.434Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-10-24T20:41:49.986Z - Established a connection. Number of open connections: 3
+[NX Daemon Server] - 2024-10-24T20:41:49.995Z - Established a connection. Number of open connections: 4
+[NX Daemon Server] - 2024-10-24T20:41:50.000Z - Closed a connection. Number of open connections: 3
+[NX Daemon Server] - 2024-10-24T20:41:50.004Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-10-24T20:41:50.005Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-10-24T20:41:50.009Z - Time taken for 'total for creating and serializing project graph' 0.772356999994372ms
+[NX Daemon Server] - 2024-10-24T20:41:50.013Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-10-24T20:41:50.013Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 8.
+[NX Daemon Server] - 2024-10-24T20:41:50.221Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-10-24T20:41:50.223Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-10-24T20:41:50.223Z - Handled HASH_TASKS. Handling time: 41. Response time: 2.
+[NX Daemon Server] - 2024-10-24T20:41:50.646Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-10-24T20:41:50.646Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-10-24T20:41:50.646Z - Handled RECORD_OUTPUTS_HASH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-10-24T20:41:50.681Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-10-24T20:41:50.681Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-10-24T20:41:50.681Z - Handled RECORD_OUTPUTS_HASH. Handling time: 5. Response time: 0.
+[NX Daemon Server] - 2024-10-24T20:41:51.454Z - Closed a connection. Number of open connections: 2

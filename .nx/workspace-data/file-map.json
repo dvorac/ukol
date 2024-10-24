@@ -1,0 +1,694 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.8.6",
+  "deps": {
+    "@apollo/client": "^3.6.9",
+    "@tanstack/react-query": "^4.2.1",
+    "apollo-server-express": "^3.10.0",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "graphql": "^16.5.0",
+    "knex": "^2.3.0",
+    "latest": "^0.2.0",
+    "morgan": "^1.10.0",
+    "objection": "^3.0.1",
+    "pg": "^8.8.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.38.0",
+    "reflect-metadata": "^0.1.13",
+    "regenerator-runtime": "0.13.7",
+    "styled-components": "^5.3.6",
+    "tslib": "^2.3.0",
+    "uuid": "^9.0.0",
+    "@graphql-codegen/cli": "^2.11.6",
+    "@graphql-codegen/import-types-preset": "^2.2.3",
+    "@graphql-codegen/near-operation-file-preset": "^2.4.1",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
+    "@graphql-tools/mock": "^8.7.6",
+    "@graphql-tools/schema": "^9.0.1",
+    "@nrwl/cli": "15.9.3",
+    "@nrwl/cypress": "14.5.4",
+    "@nrwl/eslint-plugin-nx": "14.5.4",
+    "@nrwl/express": "^14.5.4",
+    "@nrwl/jest": "14.5.4",
+    "@nrwl/js": "14.5.4",
+    "@nrwl/linter": "14.5.4",
+    "@nrwl/node": "14.5.4",
+    "@nrwl/react": "14.5.4",
+    "@nrwl/web": "14.5.4",
+    "@nx-tools/container-metadata": "^4.0.2",
+    "@nx-tools/nx-container": "^4.0.2",
+    "@nx/workspace": "19.8.4",
+    "@testing-library/react": "13.3.0",
+    "@types/express": "4.17.13",
+    "@types/jest": "27.4.1",
+    "@types/node": "^18.11.17",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "@types/react-is": "17.0.3",
+    "@types/styled-components": "5.1.25",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "babel-jest": "27.5.1",
+    "babel-plugin-styled-components": "1.10.7",
+    "cypress": "^10.2.0",
+    "eslint": "~8.15.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "27.5.1",
+    "nx": "19",
+    "prettier": "^2.6.2",
+    "react-test-renderer": "18.2.0",
+    "ts-jest": "27.1.4",
+    "ts-node": "~10.8.0",
+    "typescript": "5.5.4"
+  },
+  "pathMappings": {
+    "@ukol/data": [
+      "libs/data/src/index.ts"
+    ],
+    "@ukol/graphql": [
+      "libs/graphql/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".dockerignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "7057873921047162436"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "15388041757782744192"
+      },
+      {
+        "file": ".github/workflows/merge.yml",
+        "hash": "9516997424820258312"
+      },
+      {
+        "file": ".github/workflows/pr.yml",
+        "hash": "3033683968368957256"
+      },
+      {
+        "file": ".github/workflows/tryout.yml",
+        "hash": "12361265986943721026"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "594232218447620138"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "17733650430415207254"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".tool-versions",
+        "hash": "8158718805528864348"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": "README.md",
+        "hash": "17416001047982632465"
+      },
+      {
+        "file": "babel.config.json",
+        "hash": "5546405625092116747"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "8234930964643855914"
+      },
+      {
+        "file": "infra/README.md",
+        "hash": "10149273165601581847"
+      },
+      {
+        "file": "infra/acm.tf",
+        "hash": "11569205128097080997"
+      },
+      {
+        "file": "infra/alb.tf",
+        "hash": "17022820449372109648"
+      },
+      {
+        "file": "infra/api/alb.tf",
+        "hash": "2279939065460313057"
+      },
+      {
+        "file": "infra/api/ecr.tf",
+        "hash": "16162639882731237129"
+      },
+      {
+        "file": "infra/api/ecs.tf",
+        "hash": "6698142110255753933"
+      },
+      {
+        "file": "infra/api/iam.tf",
+        "hash": "1182965014849975648"
+      },
+      {
+        "file": "infra/api/route53.tf",
+        "hash": "15645480582561197538"
+      },
+      {
+        "file": "infra/db/ecr.tf",
+        "hash": "427521713941890082"
+      },
+      {
+        "file": "infra/db/ecs.tf",
+        "hash": "16145515554004855746"
+      },
+      {
+        "file": "infra/db/rds.tf",
+        "hash": "8715442040288049057"
+      },
+      {
+        "file": "infra/ec2.tf",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "infra/ecr.tf",
+        "hash": "2835882381049778810"
+      },
+      {
+        "file": "infra/ecs.sh",
+        "hash": "295492585696258797"
+      },
+      {
+        "file": "infra/ecs.tf",
+        "hash": "5173231411703382777"
+      },
+      {
+        "file": "infra/iam.tf",
+        "hash": "10085931109667156841"
+      },
+      {
+        "file": "infra/main.tf",
+        "hash": "4251997488537820677"
+      },
+      {
+        "file": "infra/rds.tf",
+        "hash": "15118874281759357848"
+      },
+      {
+        "file": "infra/route53.tf",
+        "hash": "9540107902947206657"
+      },
+      {
+        "file": "infra/variables.tf",
+        "hash": "5973556882747155964"
+      },
+      {
+        "file": "infra/vpc.tf",
+        "hash": "16805073313687542557"
+      },
+      {
+        "file": "infra/web/cloudfront.tf",
+        "hash": "15038687521723363704"
+      },
+      {
+        "file": "infra/web/ecr.tf",
+        "hash": "12501320895649398020"
+      },
+      {
+        "file": "infra/web/ecs.tf",
+        "hash": "2180517286335659568"
+      },
+      {
+        "file": "infra/web/lb.tf",
+        "hash": "10910582411802633698"
+      },
+      {
+        "file": "infra/web/route53.tf",
+        "hash": "1739331101488809159"
+      },
+      {
+        "file": "infra/web/s3.tf",
+        "hash": "13478388840451232896"
+      },
+      {
+        "file": "infra/zones.tf",
+        "hash": "8151702658187579612"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "2950215254536237782"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "2772139696069860212"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "2057839533310938794"
+      },
+      {
+        "file": "notes.md",
+        "hash": "3517958588670607482"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7131787884145824036"
+      },
+      {
+        "file": "package.json",
+        "hash": "2410404997227747864"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "113265158049840930"
+      },
+      {
+        "file": "workspace.json",
+        "hash": "9401521711794955980"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "12764247039622884376"
+      }
+    ],
+    "projectFileMap": {
+      "api": [
+        {
+          "file": "apps/api/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "apps/api/Dockerfile",
+          "hash": "7251234284505990565"
+        },
+        {
+          "file": "apps/api/jest.config.ts",
+          "hash": "6009935630386182799"
+        },
+        {
+          "file": "apps/api/project.json",
+          "hash": "9567428029213272075"
+        },
+        {
+          "file": "apps/api/src/app/config/knexfile.ts",
+          "hash": "7269355907516148146",
+          "deps": [
+            "npm:knex",
+            "npm:pg"
+          ]
+        },
+        {
+          "file": "apps/api/src/app/graphql/index.ts",
+          "hash": "1500870838855724544",
+          "deps": [
+            "graphql",
+            "npm:apollo-server-express",
+            "npm:apollo-server-core"
+          ]
+        },
+        {
+          "file": "apps/api/src/app/graphql/resolvers/index.ts",
+          "hash": "12936282102530591921"
+        },
+        {
+          "file": "apps/api/src/app/graphql/resolvers/priorities.ts",
+          "hash": "11058637353557304843",
+          "deps": [
+            "graphql",
+            "@ukol/data"
+          ]
+        },
+        {
+          "file": "apps/api/src/app/graphql/resolvers/tasks.ts",
+          "hash": "11271254490210718098",
+          "deps": [
+            "graphql",
+            "@ukol/data",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "apps/api/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/api/src/environments/environment.prod.ts",
+          "hash": "551718244916244919"
+        },
+        {
+          "file": "apps/api/src/environments/environment.ts",
+          "hash": "11200915170074749681"
+        },
+        {
+          "file": "apps/api/src/main.ts",
+          "hash": "14953301434587428135",
+          "deps": [
+            "npm:express",
+            "npm:cors",
+            "npm:morgan",
+            "npm:knex",
+            "npm:objection"
+          ]
+        },
+        {
+          "file": "apps/api/tsconfig.app.json",
+          "hash": "9090779640219499351"
+        },
+        {
+          "file": "apps/api/tsconfig.json",
+          "hash": "9214820933160915425"
+        },
+        {
+          "file": "apps/api/tsconfig.spec.json",
+          "hash": "10595040461224341030"
+        }
+      ],
+      "web": [
+        {
+          "file": "apps/web/.babelrc",
+          "hash": "11572746819103806986"
+        },
+        {
+          "file": "apps/web/.browserslistrc",
+          "hash": "2888533144288818662"
+        },
+        {
+          "file": "apps/web/.eslintrc.json",
+          "hash": "10075191527724852300"
+        },
+        {
+          "file": "apps/web/Dockerfile",
+          "hash": "12133600988692286039"
+        },
+        {
+          "file": "apps/web/jest.config.ts",
+          "hash": "7762086759717463521"
+        },
+        {
+          "file": "apps/web/nginx.conf",
+          "hash": "5126309130844212001"
+        },
+        {
+          "file": "apps/web/project.json",
+          "hash": "790374982256388569"
+        },
+        {
+          "file": "apps/web/src/app/apollo.ts",
+          "hash": "14369650149156314321",
+          "deps": [
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/app.tsx",
+          "hash": "1882582529287883800",
+          "deps": [
+            "npm:@apollo/client",
+            "npm:@tanstack/react-query"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/home/home.spec.tsx",
+          "hash": "12134735481367395736",
+          "deps": [
+            "npm:@apollo/client",
+            "npm:@testing-library/react",
+            "npm:@graphql-tools/mock",
+            "graphql",
+            "npm:graphql",
+            "npm:@tanstack/react-query"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/home/home.tsx",
+          "hash": "18341884153643950513",
+          "deps": [
+            "graphql"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/priority/sort.spec.ts",
+          "hash": "4466390620594664686",
+          "deps": [
+            "graphql"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/priority/sort.ts",
+          "hash": "4700810135967158464",
+          "deps": [
+            "graphql"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/tasks/add-task.tsx",
+          "hash": "17476311961304761478",
+          "deps": [
+            "graphql",
+            "npm:react",
+            "npm:react-hook-form",
+            "npm:styled-components"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/tasks/list.tsx",
+          "hash": "2290537729883637079",
+          "deps": [
+            "graphql",
+            "npm:styled-components"
+          ]
+        },
+        {
+          "file": "apps/web/src/app/tasks/select-priority.tsx",
+          "hash": "12696839905168060510",
+          "deps": [
+            "graphql",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/web/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/web/src/environments/environment.prod.ts",
+          "hash": "12785999169959988027"
+        },
+        {
+          "file": "apps/web/src/environments/environment.ts",
+          "hash": "18368352759149328457"
+        },
+        {
+          "file": "apps/web/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/web/src/index.html",
+          "hash": "9337812634820863643"
+        },
+        {
+          "file": "apps/web/src/main.tsx",
+          "hash": "4731961929376199421",
+          "deps": [
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "apps/web/src/polyfills.ts",
+          "hash": "12959605551678143287",
+          "deps": [
+            "npm:core-js",
+            "npm:regenerator-runtime"
+          ]
+        },
+        {
+          "file": "apps/web/tsconfig.app.json",
+          "hash": "6859247106828182436"
+        },
+        {
+          "file": "apps/web/tsconfig.json",
+          "hash": "16660509110492229666"
+        },
+        {
+          "file": "apps/web/tsconfig.spec.json",
+          "hash": "18221553742812191035"
+        }
+      ],
+      "@ukol/data": [
+        {
+          "file": "libs/data/.babelrc",
+          "hash": "2685020516260856122"
+        },
+        {
+          "file": "libs/data/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "libs/data/Dockerfile",
+          "hash": "12425588420471999905"
+        },
+        {
+          "file": "libs/data/README.md",
+          "hash": "9538809604142177576"
+        },
+        {
+          "file": "libs/data/jest.config.ts",
+          "hash": "3981689689090797677"
+        },
+        {
+          "file": "libs/data/package.json",
+          "hash": "17077681013396343786"
+        },
+        {
+          "file": "libs/data/project.json",
+          "hash": "9522279728179519028"
+        },
+        {
+          "file": "libs/data/src/db/knexfile.js",
+          "hash": "3762969535657709217",
+          "deps": [
+            "npm:knex",
+            "npm:pg"
+          ]
+        },
+        {
+          "file": "libs/data/src/db/migrations/20221218193538_init.js",
+          "hash": "17462252831988937098"
+        },
+        {
+          "file": "libs/data/src/db/seeds/init.js",
+          "hash": "15556242641750047938",
+          "deps": [
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "libs/data/src/index.ts",
+          "hash": "2593357148974443358"
+        },
+        {
+          "file": "libs/data/src/model/priority.ts",
+          "hash": "9219903122480807229",
+          "deps": [
+            "npm:objection"
+          ]
+        },
+        {
+          "file": "libs/data/src/model/task.ts",
+          "hash": "7940122229258321201",
+          "deps": [
+            "npm:objection"
+          ]
+        },
+        {
+          "file": "libs/data/tsconfig.json",
+          "hash": "17079550796797979564"
+        },
+        {
+          "file": "libs/data/tsconfig.lib.json",
+          "hash": "13034901906147047048"
+        },
+        {
+          "file": "libs/data/tsconfig.spec.json",
+          "hash": "2406015174838385060"
+        }
+      ],
+      "graphql": [
+        {
+          "file": "libs/graphql/.babelrc",
+          "hash": "2685020516260856122"
+        },
+        {
+          "file": "libs/graphql/.eslintrc.json",
+          "hash": "10976486559068014650"
+        },
+        {
+          "file": "libs/graphql/README.md",
+          "hash": "2830780281629197495"
+        },
+        {
+          "file": "libs/graphql/codegen.yml",
+          "hash": "5529559448742655126"
+        },
+        {
+          "file": "libs/graphql/jest.config.ts",
+          "hash": "15469946872445706305"
+        },
+        {
+          "file": "libs/graphql/project.json",
+          "hash": "9284573644348671515"
+        },
+        {
+          "file": "libs/graphql/src/generated/api/typedefs.ts",
+          "hash": "5684665230084963072",
+          "deps": [
+            "npm:graphql-tag"
+          ]
+        },
+        {
+          "file": "libs/graphql/src/generated/client/hooks.ts",
+          "hash": "13045749852086962321",
+          "deps": [
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "libs/graphql/src/generated/client/operations.ts",
+          "hash": "9647272169351091428"
+        },
+        {
+          "file": "libs/graphql/src/generated/schema.ts",
+          "hash": "13286955864230877494"
+        },
+        {
+          "file": "libs/graphql/src/index.ts",
+          "hash": "15144740997331335641"
+        },
+        {
+          "file": "libs/graphql/src/lib/operations/priorities.graphql",
+          "hash": "16113365183577906981"
+        },
+        {
+          "file": "libs/graphql/src/lib/operations/tasks.graphql",
+          "hash": "6793148459911645137"
+        },
+        {
+          "file": "libs/graphql/src/schema.graphql",
+          "hash": "9080413509130479030"
+        },
+        {
+          "file": "libs/graphql/tsconfig.json",
+          "hash": "12834038490315927699"
+        },
+        {
+          "file": "libs/graphql/tsconfig.lib.json",
+          "hash": "8044021312735567114"
+        },
+        {
+          "file": "libs/graphql/tsconfig.spec.json",
+          "hash": "2406015174838385060"
+        }
+      ]
+    }
+  }
+}

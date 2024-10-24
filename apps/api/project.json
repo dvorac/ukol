@@ -1,7 +1,9 @@
 {
+  "name": "api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/src",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
@@ -53,7 +55,7 @@
       }
     },
     "knex": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "@nx/workspace:run-commands",
       "options": {
         "commands": [
           {
@@ -80,6 +82,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

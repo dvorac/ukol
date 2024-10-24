@@ -1,7 +1,9 @@
 {
+  "name": "graphql",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/graphql/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -19,7 +21,7 @@
       }
     },
     "codegen": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "@nx/workspace:run-commands",
       "options": {
         "commands": [
           {
@@ -28,6 +30,5 @@
         ]
       }
     }
-  },
-  "tags": []
+  }
 }

@@ -1,7 +1,9 @@
 {
+  "name": "@ukol/data",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
@@ -48,11 +50,10 @@
       }
     },
     "knex": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "@nx/workspace:run-commands",
       "options": {
         "command": "yarn knex --cwd libs/knex-models/src/db"
       }
     }
-  },
-  "tags": []
+  }
 }
