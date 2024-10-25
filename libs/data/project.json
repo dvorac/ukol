@@ -13,7 +13,8 @@
         "tsConfig": "libs/data/tsconfig.lib.json",
         "assets": ["libs/data/src/db/**/*"],
         "generatePackageJson": true,
-        "buildableProjectDepsInPackageJsonType": "dependencies"
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {
@@ -25,7 +26,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/libs/data"],
+      "outputs": ["{workspaceRoot}/coverage/libs/data"],
       "options": {
         "jestConfig": "libs/data/jest.config.ts",
         "passWithNoTests": true

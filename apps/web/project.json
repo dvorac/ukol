@@ -71,7 +71,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/apps/web"],
+      "outputs": ["{workspaceRoot}/coverage/apps/web"],
       "options": {
         "jestConfig": "apps/web/jest.config.ts",
         "passWithNoTests": true
