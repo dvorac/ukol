@@ -1,10 +1,11 @@
 {
+  "name": "web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/web/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -18,7 +19,7 @@
         "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
         "styles": [],
         "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "webpackConfig": "@nx/react/plugins/webpack"
       },
       "configurations": {
         "development": {
@@ -44,7 +45,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nx/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
         "port": 8080,
@@ -62,14 +63,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/apps/web"],
       "options": {
         "jestConfig": "apps/web/jest.config.ts",

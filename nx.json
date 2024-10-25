@@ -22,10 +22,16 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
     }
   },
   "generators": {
-    "@nrwl/react": {
+    "@nx/react": {
       "application": {
         "style": "styled-components",
         "linter": "eslint",

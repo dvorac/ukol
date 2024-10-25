@@ -1,10 +1,11 @@
 {
+  "name": "data",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/data",
@@ -16,14 +17,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/data/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/libs/data"],
       "options": {
         "jestConfig": "libs/data/jest.config.ts",
@@ -48,7 +49,7 @@
       }
     },
     "knex": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "yarn knex --cwd libs/knex-models/src/db"
       }
