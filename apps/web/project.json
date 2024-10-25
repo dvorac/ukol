@@ -64,17 +64,13 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/web"],
       "options": {
-        "jestConfig": "apps/web/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/web/jest.config.ts"
       }
     },
     "container": {

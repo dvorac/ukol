@@ -19,17 +19,13 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/data/**/*.ts"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/data"],
       "options": {
-        "jestConfig": "libs/data/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/data/jest.config.ts"
       }
     },
     "container": {
