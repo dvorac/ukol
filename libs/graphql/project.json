@@ -1,25 +1,23 @@
 {
+  "name": "graphql",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/graphql/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/graphql/**/*.ts"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/graphql"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/graphql"],
       "options": {
-        "jestConfig": "libs/graphql/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/graphql/jest.config.ts"
       }
     },
     "codegen": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
@@ -28,6 +26,5 @@
         ]
       }
     }
-  },
-  "tags": []
+  }
 }

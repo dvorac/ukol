@@ -1,4 +1,4 @@
-import { Task, UpdateTaskInput, useAllPrioritiesQuery, useAllTasksQuery, useUpdateTaskMutation } from '@ukol/graphql';
+import { UpdateTaskInput, useAllPrioritiesQuery, useAllTasksQuery, useUpdateTaskMutation } from '@ukol/graphql';
 import { AddTask } from '../tasks/add-task';
 import { TaskList } from '../tasks/list';
 
@@ -22,7 +22,7 @@ export const Home: React.FC<HomeProps> = () => {
 
   if (tl || pl) {
     return (<div>Loading...</div>)
-  };
+  }
 
   if (te || pe) {
     return (
@@ -31,7 +31,7 @@ export const Home: React.FC<HomeProps> = () => {
         <div>{`priority error: ${pe}`}</div>
       </>
     )
-  };
+  }
 
   return (
     <>
