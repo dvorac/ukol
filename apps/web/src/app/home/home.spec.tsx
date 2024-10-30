@@ -1,8 +1,8 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { SchemaLink } from '@apollo/client/link/schema'
 import { render } from '@testing-library/react';
-import { addMocksToSchema } from '@graphql-tools/mock'
-import { typedefs } from '@ukol/graphql'
+import { addMocksToSchema } from '@graphql-tools/mock';
+import { typedefs } from '@ukol/graphql';
 import { buildASTSchema } from 'graphql/utilities';
 import { Home } from './home';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
