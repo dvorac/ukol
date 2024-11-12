@@ -7,6 +7,8 @@ ENV NODE_ENV development
 COPY . .
 
 RUN yarn install --frozen-lockfile
+
+RUN yarn nx reset
 RUN yarn nx codegen graphql
 RUN yarn nx build api
 

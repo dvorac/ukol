@@ -40,6 +40,5 @@
     }
   },
   "defaultProject": "web",
-  "defaultBase": "main",
-  "useLegacyCache": true
+  "defaultBase": "main"
 }
