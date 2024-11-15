@@ -1,5 +1,5 @@
 variable "region" {
-  default = "us-east"
+  default = "us-east-1"
 }
 
 variable "state_bucket" {
