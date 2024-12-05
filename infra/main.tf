@@ -24,10 +24,5 @@ provider "aws" {
 }
 
 locals {
-  cluster = "ukol"
 
-  app = {
-    container_name = "api-container"
-    container_port = 3333
-  }
 }
