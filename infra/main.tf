@@ -24,5 +24,20 @@ provider "aws" {
 }
 
 locals {
-
+  vpc = {
+    cidr = "10.0.0.0/16"
+  }
+  security = {
+    sg_1 = "ecs-security-group"
+  }
+  port = 3333
+  ecs = {
+    cluster   = "ukol-api-cluster"
+    task      = "ukol-api-task"
+    container = "ukol-api-container"
+  }
+  alb = {
+    name         = "ukol-api-alb"
+    target_group = "ukol-api-target-group"
+  }
 }

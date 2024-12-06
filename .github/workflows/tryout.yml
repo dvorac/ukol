@@ -89,7 +89,7 @@ jobs:
         - name: tf apply
           run: terraform apply -auto-approve terraform.plan
         - name: sleep
-          run: sleep 600s
+          run: sleep 300s
           shell: bash
         - name: tf destroy
           if: always()

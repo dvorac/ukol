@@ -1,11 +1,7 @@
-locals {
-  vpc_cidr = "10.0.0.0/16"
-}
-
 ### vpc ###
 
 resource "aws_vpc" "ukol" {
-  cidr_block           = local.vpc_cidr
+  cidr_block           = local.vpc.cidr
   enable_dns_hostnames = true
 }
 
@@ -48,22 +44,22 @@ resource "aws_subnet" "private2" {
 ### nat ###
 
 resource "aws_eip" "eip_gw1" {
-  domain = "vpc"
-  depends_on = [ aws_internet_gateway.ukol ]
+  domain     = "vpc"
+  depends_on = [aws_internet_gateway.ukol]
 }
 
 resource "aws_eip" "eip_gw2" {
-  domain = "vpc"
-  depends_on = [ aws_internet_gateway.ukol ]
+  domain     = "vpc"
+  depends_on = [aws_internet_gateway.ukol]
 }
 
 resource "aws_nat_gateway" "gw1" {
-  subnet_id = aws_subnet.public1.id
+  subnet_id     = aws_subnet.public1.id
   allocation_id = aws_eip.eip_gw1.id
 }
 
 resource "aws_nat_gateway" "gw2" {
-  subnet_id = aws_subnet.public2.id
+  subnet_id     = aws_subnet.public2.id
   allocation_id = aws_eip.eip_gw2.id
 }
 
@@ -98,7 +94,7 @@ resource "aws_route_table_association" "public2" {
 resource "aws_route_table" "private1" {
   vpc_id = aws_vpc.ukol.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.gw1.id
   }
 }
@@ -106,7 +102,7 @@ resource "aws_route_table" "private1" {
 resource "aws_route_table" "private2" {
   vpc_id = aws_vpc.ukol.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.gw2.id
   }
 }
@@ -124,7 +120,7 @@ resource "aws_route_table_association" "private2" {
 ### security groups ###
 
 resource "aws_security_group" "security_group" {
-  name   = "ecs-security-group"
+  name   = local.security.sg_1
   vpc_id = aws_vpc.ukol.id
 
   ingress {
