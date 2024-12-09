@@ -29,7 +29,15 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
           containerPort = local.port
           hostPort      = local.port
         }
-      ]
+      ],
+      logConfiguration = {
+        logDriver = "awslogs",
+        options = {
+          awslogs-region = "us-east-1",
+          awslogs-group = "${aws_cloudwatch_log_group.log_group.name}"
+          awslogs-stream-prefix = "ecs"
+        }
+      }
     }
   ])
 }
