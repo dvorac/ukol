@@ -1,3 +1,7 @@
-resource "aws_cloudwatch_log_group" "log_group" {
+resource "aws_cloudwatch_log_group" "api" {
   name = "/ukol/api"
+}
+
+resource "aws_cloudwatch_log_group" "web" {
+  name = "/ukol/web"
 }

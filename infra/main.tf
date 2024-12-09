@@ -30,14 +30,31 @@ locals {
   security = {
     sg_1 = "ecs-security-group"
   }
-  port = 3333
   ecs = {
-    cluster   = "ukol-api-cluster"
-    task      = "ukol-api-task"
-    container = "ukol-api-container"
+    cluster   = "ukol-cluster"
   }
-  alb = {
-    name         = "ukol-api-alb"
-    target_group = "ukol-api-target-group"
+  api = {
+    port = 3333
+    ecs = {
+      service = "ukol-api-service"
+      task      = "ukol-api-task"
+      container = "ukol-api-container"
+    }
+    alb = {
+      name         = "ukol-api-alb"
+      target_group = "ukol-api-target-group"
+    }
+  }
+  web = {
+    port = 8080
+    ecs = {
+      service = "ukol-web-service"
+      task      = "ukol-web-task"
+      container = "ukol-web-container"
+    }
+    alb = {
+      name         = "ukol-web-alb"
+      target_group = "ukol-web-target-group"
+    }
   }
 }
