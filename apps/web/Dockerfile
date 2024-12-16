@@ -9,15 +9,13 @@ COPY . .
 RUN yarn install --frozen-lockfile
 
 RUN yarn nx reset
-RUN yarn nx build web
+RUN yarn nx run web:build:production
 
 FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html
 
-
 COPY --from=build /build/apps/web/nginx.conf /etc/nginx/conf.d/default.conf
-RUN cat /etc/nginx/conf.d/default.conf
 COPY --from=build /build/dist/apps/web .
 
 EXPOSE 8080
