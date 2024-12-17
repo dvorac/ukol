@@ -8,6 +8,8 @@ COPY . .
 
 RUN yarn install --frozen-lockfile
 
+RUN echo "api: $API, gql: $GQL"
+
 RUN yarn nx reset
 RUN yarn nx run web:build:production
 

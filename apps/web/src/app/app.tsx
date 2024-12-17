@@ -16,7 +16,7 @@ export const App = () => {
         <Home/>
         <ul>
           { env.map(e => (
-            <li key={e.k}>{e.k}: {e.v.toString() }</li>
+            <li key={e.k}>{e.k}: {e.v}</li>
           ))}
         </ul>
       </ApolloProvider>

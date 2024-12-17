@@ -1,14 +1,11 @@
 /*
-  Do not use these variables in code outside of this file.
-  These are placeholders for webpack to replace at build-time
-  with values from built-time environment variables, which will
-  be baked-in to the frontend build.
+  We are actually only interested in disabling the noPropertyAccessFromIndexSignature ts rule here.
+  However, you cannot disable a single rule for a whole file in Typescript.
 */
-declare var _GQL_: string;
-declare var _API_: string;
+// @ts-nocheck
 
 export const environment = {
   production: true,
-  graphql: _GQL_,
-  api: _API_,
+  graphql: process.env.GQL,
+  api: process.env.API,
 };

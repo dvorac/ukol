@@ -1,14 +1,15 @@
 const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react')
-const { DefinePlugin } = require('webpack')
+const { EnvironmentPlugin } = require('webpack')
 
 /*
-  This is used to pull `process.env` variables into the
+  This will pull system environment variables and push them into
+  the `process.env` node object.
 */
-const amendedDefinePlugin = new DefinePlugin({
-  _GQL_: JSON.stringify(process.env['GQL']),
-  _API_: JSON.stringify(process.env['API']),
-})
+const amendedDefinePlugin = new EnvironmentPlugin([
+  'API',
+  'GQL'
+])
 
 module.exports = composePlugins(
   // default Nx composable plugin

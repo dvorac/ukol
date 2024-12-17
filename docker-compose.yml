@@ -40,7 +40,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      - GQL=https://localhost:3333/graphql
+      - GQL=http://localhost:3333/graphql
       - API=http://localhost:3333/api
 
 volumes:
