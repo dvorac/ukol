@@ -17,10 +17,10 @@ module.exports = composePlugins(
   // default react composable plugin
   withReact(),
   // Custom composable plugin
-  (config, { options, context }) => {
+  // (config, { options, context }) => {
 
-    config.plugins.push(amendedDefinePlugin);
+  //   config.plugins.push(amendedDefinePlugin);
 
-    return config;
-  }
+  //   return config;
+  // }
 );

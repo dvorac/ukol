@@ -1,4 +1,4 @@
-FROM node:alpine as build
+FROM node:alpine AS build
 
 WORKDIR /build
 
@@ -8,18 +8,18 @@ COPY . .
 
 RUN yarn install --frozen-lockfile
 
-RUN echo "api: $API, gql: $GQL"
-
 RUN yarn nx reset
 RUN yarn nx run web:build:production
 
-FROM nginx:alpine
+FROM node:alpine AS runtime
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 
-COPY --from=build /build/apps/web/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /build/dist/apps/web .
+COPY --from=build /build/dist/apps/web ./web
+COPY --from=build /build/apps/web/server .
+
+RUN yarn install
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]

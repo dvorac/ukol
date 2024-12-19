@@ -1,26 +1,19 @@
-import { environment } from '../environments/environment';
-import apollo from './apollo';
-import { Home } from './home/home';
-import { ApolloProvider } from '@apollo/client';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+import { Apollo } from './apollo';
+import { ConfigProvider } from './config';
+import { Home } from './home/home';
+import { Query } from './query';
+
 
 export const App = () => {
-
-  const env = Object.entries(environment).map(([k, v]) => ({ k, v }));
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <ApolloProvider client={apollo}>
-        <Home/>
-        <ul>
-          { env.map(e => (
-            <li key={e.k}>{e.k}: {e.v}</li>
-          ))}
-        </ul>
-      </ApolloProvider>
-    </QueryClientProvider>
+    <Query>
+      <ConfigProvider>
+        <Apollo>
+          <Home/>
+        </Apollo>
+      </ConfigProvider>
+    </Query>
   );
 }
 
