@@ -3,6 +3,4 @@
 
 export const environment = {
   production: false,
-  graphql: 'http://localhost:3333/graphql',
-  api: 'http://localhost:3333/api',
 };

@@ -101,11 +101,11 @@ resource "aws_ecs_task_definition" "web" {
       environment = [
         {
           name = "GQL",
-          value = "https://${aws_lb.api.dns_name}:3333/graphql"
+          value = "http://${aws_lb.api.dns_name}:3333/graphql"
         },
         {
           name = "API"
-          value = "https://${aws_lb.api.dns_name}:3333/api"
+          value = "http://${aws_lb.api.dns_name}:3333/api"
         }
       ]
     }

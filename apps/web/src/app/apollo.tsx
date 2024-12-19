@@ -1,8 +1,6 @@
-import { ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import { environment } from '../environments/environment';
-import { ComponentProps, FC, PropsWithChildren, ReactNode, useContext } from 'react';
-import { ConfigContext, useConfig } from './config';
-import { ApolloProviderProps } from '@apollo/client/react/context';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { FC, PropsWithChildren } from 'react';
+import { useConfig } from './config';
 
 export interface ApolloComponentProps {
   client?: ApolloClient<any>;

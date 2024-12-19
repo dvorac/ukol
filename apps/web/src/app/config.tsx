@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { createContext, FC, PropsWithChildren, Provider, ReactNode, useContext, useState } from 'react';
+import { createContext, FC, PropsWithChildren, useContext } from 'react';
 
 export interface Config {
   API: string;
