@@ -9,7 +9,7 @@ export interface Config {
 export const ConfigContext = createContext<Config | null>(null);
 
 export interface ConfigProviderProps {
-
+  unused?: string;
 }
 
 export const useConfig = () => useContext(ConfigContext);
