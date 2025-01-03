@@ -6,7 +6,6 @@ on:
       target:
         description: The name of the environment to teardown
         required: true
-  push:
 
 env:
   TF_VAR_region: ${{ vars.AWS_REGION }}
@@ -49,4 +48,4 @@ jobs:
         - name: tf plan
           run: terraform plan -out=terraform.plan
         - name: tf destroy
-          run: tf destroy -auto-approve
+          run: terraform destroy -auto-approve

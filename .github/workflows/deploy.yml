@@ -6,7 +6,6 @@ on:
       target:
         description: The name of the environment to deploy
         required: true
-  push:
 
 env:
   TF_VAR_region: ${{ vars.AWS_REGION }}
@@ -28,7 +27,7 @@ jobs:
     steps:
       - name: clone
         uses: actions/checkout@v3
-      - name: tf setup
+      - name: terraform setup
         uses: hashicorp/setup-terraform@v1.2.1
       - name: aws credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -36,7 +35,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
           role-duration-seconds: 900
-      - name: tf init
+      - name: terraform init
         timeout-minutes: 2
         run: |
           terraform init \
@@ -46,9 +45,9 @@ jobs:
               -backend-config="bucket=${{ env.TF_VAR_state_bucket }}" \
               -backend-config="key=${{ env.TF_VAR_state_key }}" \
               -reconfigure
-      - name: tf lint
+      - name: terraform lint
         run: terraform validate
-      - name: tf plan
+      - name: terraform plan
         run: terraform plan -out=terraform.plan
-      - name: tf apply
+      - name: terraform apply
         run: terraform apply -auto-approve terraform.plan
