@@ -45,6 +45,14 @@ locals {
       target_group = "ukol-api-target-group"
     }
   }
+  migrate = {
+    port = 3333
+    ecs = {
+      service = "ukol-migrate-service"
+      task      = "ukol-migrate-task"
+      container = "ukol-migrate-container"
+    }
+  }
   web = {
     port = 8080
     ecs = {

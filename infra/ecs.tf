@@ -4,6 +4,51 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   name = local.ecs.cluster
 }
 
+
+### migrate - task definition ###
+
+resource "aws_ecs_task_definition" "migrate" {
+  family                   = local.migrate.ecs.task
+  network_mode             = "awsvpc"
+  execution_role_arn       = aws_iam_role.ecs_task_execution.arn
+  cpu                      = 256
+  memory                   = 512
+  requires_compatibilities = ["FARGATE"]
+
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+
+  container_definitions = jsonencode([
+    {
+      name      = local.migrate.ecs.container
+      image     = "${data.aws_ecr_repository.migrate.repository_url}:latest"
+      essential = true
+      portMappings = [
+        {
+          containerPort = local.migrate.port
+          hostPort      = local.migrate.port
+        }
+      ],
+      logConfiguration = {
+        logDriver = "awslogs",
+        options = {
+          awslogs-region = "us-east-1",
+          awslogs-group = "${aws_cloudwatch_log_group.migrate.name}"
+          awslogs-stream-prefix = "ecs"
+        }
+      },
+      environment = [
+        {
+          name = "DB_CONNECTION_STRING",
+          value = "postgresql://postgres:postgres@${aws_db_instance.ukol.endpoint}/ukol"
+        }
+      ]
+    }
+  ])
+}
+
 ### api - task definition ###
 
 resource "aws_ecs_task_definition" "api" {
@@ -37,7 +82,13 @@ resource "aws_ecs_task_definition" "api" {
           awslogs-group = "${aws_cloudwatch_log_group.api.name}"
           awslogs-stream-prefix = "ecs"
         }
-      }
+      },
+      environment = [
+        {
+          name = "DB_CONNECTION_STRING",
+          value = "postgresql://postgres:postgres@${aws_db_instance.ukol.endpoint}/ukol"
+        }
+      ]
     }
   ])
 }
