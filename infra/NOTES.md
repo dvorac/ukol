@@ -43,6 +43,11 @@ security:
 - tighten abilities of github IAM role
 - enable SSL across web/api/rds boundaries
 - enforce more verbose logging
+- secure the docker credentials in github action:
+  >  Run aws-actions/amazon-ecr-login@v1
+  >    
+  >  Warning: Your docker password is not masked. See https://github.com/aws-actions/amazon-ecr-login#docker-credentials for more information.
+  >  Logging into registry 115183919983.dkr.ecr.us-east-1.amazonaws.com
 
 ci/cd
 - 

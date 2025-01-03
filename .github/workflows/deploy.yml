@@ -6,6 +6,7 @@ on:
       target:
         description: The name of the environment to deploy
         required: true
+  push:
 
 env:
   TF_VAR_region: ${{ vars.AWS_REGION }}
