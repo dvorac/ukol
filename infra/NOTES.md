@@ -54,6 +54,21 @@ ci/cd
 
 # running migrate
 
+after new Docker images have been published, run github workflows with the `gh` cli:
+
+deploy:
+```
+gh workflow run 'Ukol SDLC - Infra Deploy' --ref <working_branch_name> -f target=unused
+```
+then run the db schema `migrate` ecs task manually (AWS console > ECS cluster > Tasks > Run Task...)
+---
+after you are done testing, teardown the env with the other github workflow:
+```
+gh workflow run 'Ukol SDLC - Infra Teardown' --ref <working_branch_name> -f target=unused
+```
+
+## todo
 - run (auto?) when new infra is deployed
 - run when new containers are deployed
 - run arbitrarily
+
