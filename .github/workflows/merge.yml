@@ -5,23 +5,52 @@ on:
     branches:
       - 'main'
 
+env:
+  TF_VAR_region: ${{ vars.AWS_REGION }}
+  TF_VAR_role: ${{ secrets.AWS_IAM_ROLE }}
+  TF_VAR_state_bucket: ${{ vars.AWS_TF_STATE_BUCKET }}
+  TF_VAR_state_key: ${{ vars.AWS_TF_STATE_KEY }}
 jobs:
-  checks:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    env:
+      AWS_REGION: us-east-1
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      # nx-set-shas lets us take advantage of the smart 'affected' build
-      # functionality in nx. This will speed up builds on PRs considerably,
-      # by only building the apps that saw code changes (or failed the last
-      # build)
-      # see https://github.com/marketplace/actions/nx-set-shas#background
-      # see https://nx.dev/using-nx/affected
-      - uses: nrwl/nx-set-shas@v2
-      - run: yarn install --frozen-lockfile
-      # parellelization will speed up the build a little
-      # concurrency=2 for the expected 2 apps we have (web, express)
-      - run: yarn nx run-many --target=build --parallel=2
-      - run: yarn nx run-many --target=lint --parallel=2
-      - run: yarn nx run-many --target=test --parallel=2
+      - name: nx affected history
+        uses: nrwl/nx-set-shas@v3
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+      - name: build and checks
+        run: |
+          yarn nx run-many --target=build --parallel=2
+          yarn nx run-many --target=lint --parallel=2
+          yarn nx run-many --target=test --parallel=2
+      - name: aws credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+          role-session-name: ukol-tryout
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: aws ecr login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: publish docker
+        id: publish-docker
+        env:
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # see https://github.com/gperdomor/nx-tools/issues/619
+          INPUT_PUSH: true
+          INPUT_DATA_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-migrate
+          INPUT_DATA_TAGS: latest
+          INPUT_API_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-api
+          INPUT_API_TAGS: latest
+          INPUT_WEB_IMAGES: ${{ steps.login-ecr.outputs.registry }}/dvorac-ukol-web
+          INPUT_WEB_TAGS: latest
+        run: yarn nx run-many --target=container --projects=api,data,web
