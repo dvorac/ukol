@@ -67,6 +67,7 @@
       "executor": "@nx-tools/nx-container:build",
       "options": {
         "engine": "docker",
+        "file": "apps/api/Dockerfile",
         "metadata": {
           "images": ["ukol/api"],
           "load": true,

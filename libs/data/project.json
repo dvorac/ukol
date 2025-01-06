@@ -32,6 +32,7 @@
       "executor": "@nx-tools/nx-container:build",
       "options": {
         "engine": "docker",
+        "file": "libs/data/Dockerfile",
         "metadata": {
           "images": ["ukol/data"],
           "load": true,
