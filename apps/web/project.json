@@ -62,6 +62,17 @@
         }
       }
     },
+    "serve-node": {
+      "executor": "@nx:js/node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web:build",
+        "port": 8080,
+        "inspect": "inspect",
+        "watch": true
+
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]

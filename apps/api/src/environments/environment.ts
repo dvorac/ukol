@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  db: process.env.DB_CONNECTION_STRING,
+  db: "postgresql://postgres:postgres@db:5432/ukol",
 };

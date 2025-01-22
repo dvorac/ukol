@@ -1,4 +1,5 @@
 import { Knex } from 'knex';
+import { environment } from '../../environments/environment';
 
 /**
  * This 'requires' exists to ensure that the postgres dependency is included in the
@@ -19,7 +20,7 @@ require('pg');
 
 const config: Knex.Config = {
   client: 'pg',
-  connection: process.env.DB_CONNECTION_STRING,
+  connection: environment.db,
 };
 
 export default config;
