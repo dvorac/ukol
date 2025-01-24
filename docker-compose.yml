@@ -36,10 +36,9 @@ services:
   web:
     build:
       context: .
-      dockerfile: apps/web/Dockerfile
+      dockerfile: apps/server/Dockerfile
       args:
         BUILD_ENV: development
-        RUN_COMMAND: debug
     ports:
       - 8080:8080
       - 9229:9229

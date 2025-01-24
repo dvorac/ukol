@@ -9,9 +9,6 @@ ARG BUILD_ENV=production
 # defaults app port in container. additional ports for debugging should
 # be exposed only thru local docker-compose scripts.
 ARG PORT=8080
-# defaults to running the package.json "non-debug" server start script.
-# use "debug" to select server start script to enable debugging.
-ARG RUN_COMMAND="start"
 
 ENV NODE_ENV development
 
@@ -20,18 +17,26 @@ COPY . .
 RUN yarn install --frozen-lockfile
 
 RUN yarn nx reset
+
 RUN yarn nx run web:build:${BUILD_ENV}
+
+RUN yarn nx run server:build:${BUILD_ENV}
 
 FROM node:alpine AS runtime
 
 WORKDIR /app
 
+ENV NODE_ENV production
+
+# tells the express server that hosts the React app where to find the pre-built
+# react app files to serve via `express.static`.
+ENV REACT_APP_PATH ./web
+
 COPY --from=build /build/dist/apps/web ./web
-COPY --from=build /build/apps/web/server .
+COPY --from=build /build/dist/apps/server .
 
 RUN yarn install
 
 EXPOSE ${PORT}
 
-RUN echo #RUN_COMMAND
-CMD ["yarn", "run", ${RUN_COMMAND}]
+CMD ["node", "main.js"]
