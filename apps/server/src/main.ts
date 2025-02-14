@@ -1,13 +1,16 @@
 import express from 'express';
+import cors from 'cors'
 import * as path from 'path';
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const REACT_APP_PATH = process.env.REACT_APP_PATH || path.join(__dirname, './', 'web')
 
 const app = express();
 
 // Serve static files from the React app's build folder
 app.use(express.static(REACT_APP_PATH));
+
+app.use(cors())
 
 app.get('/health', (_, res) => {
   res.status(200).json({ status: 'OK' });

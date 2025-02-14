@@ -22,6 +22,8 @@ RUN yarn nx run web:build:${BUILD_ENV}
 
 RUN yarn nx run server:build:${BUILD_ENV}
 
+# =====
+
 FROM node:alpine AS runtime
 
 WORKDIR /app

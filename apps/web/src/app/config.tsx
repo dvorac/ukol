@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { createContext, FC, PropsWithChildren, useContext } from 'react';
+import { environment } from '../environments/environment';
 
 export interface Config {
   API: string;
@@ -17,7 +18,7 @@ export const useConfig = () => useContext(ConfigContext);
 export const ConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({ children, ...props }) => {
 
   const getConfig = async () => {
-    const response = await fetch(`${window.location.origin}/config`);
+    const response = await fetch(environment.config);
     return await response.json();
   }
 

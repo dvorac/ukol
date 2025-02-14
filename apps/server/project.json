@@ -39,15 +39,6 @@
         }
       }
     },
-    "serve-watch": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "nodemon ./dist/apps/server/main.js",
-        "watch": [
-          "apps/server/**/*.ts"
-        ]
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
