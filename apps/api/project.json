@@ -38,6 +38,9 @@
       "configurations": {
         "production": {
           "buildTarget": "api:build:production"
+        },
+        "development": {
+          "buildTarget": "api:build:development"
         }
       }
     },

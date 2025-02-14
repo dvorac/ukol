@@ -54,7 +54,7 @@
       "configurations": {
         "development": {
           "buildTarget": "web:build:development",
-          "hmr": true
+          "hmr": false
         },
         "production": {
           "buildTarget": "web:build:production",
@@ -71,24 +71,6 @@
       "outputs": ["{workspaceRoot}/coverage/apps/web"],
       "options": {
         "jestConfig": "apps/web/jest.config.ts"
-      }
-    },
-    "container": {
-      "executor": "@nx-tools/nx-container:build",
-      "options": {
-        "engine": "docker",
-        "file": "apps/web/Dockerfile",
-        "metadata": {
-          "images": ["ukol/web"],
-          "load": true,
-          "tags": [
-            "type=schedule",
-            "type=ref,event=branch",
-            "type=ref,event=tag",
-            "type=ref,event=pr",
-            "type=sha,prefix=sha-"
-          ]
-        }
       }
     }
   },

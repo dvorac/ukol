@@ -3,4 +3,5 @@
 
 export const environment = {
   production: false,
+  config: `http://localhost:8000/config`,
 };

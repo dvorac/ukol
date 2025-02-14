@@ -36,9 +36,12 @@ services:
   web:
     build:
       context: .
-      dockerfile: apps/web/Dockerfile
+      dockerfile: apps/server/Dockerfile
+      args:
+        BUILD_ENV: development
     ports:
       - 8080:8080
+      - 9229:9229
     environment:
       - GQL=http://localhost:3333/graphql
       - API=http://localhost:3333/api

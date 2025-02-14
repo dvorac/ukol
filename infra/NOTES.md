@@ -26,6 +26,9 @@ https://medium.com/warp9/get-started-with-aws-ecs-cluster-using-terraform-cfba53
 
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_execution
 
+https://medium.com/@octavio/ecs-deployments-with-github-actions-dd34beed6528
+https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow
+
 google: "terraform aws ecs standalone one-off task"
 
 ## learning and todo
@@ -51,6 +54,9 @@ security:
 
 ci/cd
 - 
+
+devops
+- add scaffolding for debugging locally within docker-compose
 
 # running migrate
 
