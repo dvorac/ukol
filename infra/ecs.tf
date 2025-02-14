@@ -155,8 +155,12 @@ resource "aws_ecs_task_definition" "web" {
           value = "http://${aws_lb.api.dns_name}:3333/graphql"
         },
         {
-          name = "API"
+          name = "API",
           value = "http://${aws_lb.api.dns_name}:3333/api"
+        },
+        {
+          name = "PORT",
+          value = local.web.port
         }
       ]
     }
