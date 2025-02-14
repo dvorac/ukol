@@ -34,6 +34,8 @@ ENV NODE_ENV production
 # react app files to serve via `express.static`.
 ENV REACT_APP_PATH ./web
 
+ENV PORT ${PORT}
+
 COPY --from=build /build/dist/apps/web ./web
 COPY --from=build /build/dist/apps/server .
 
