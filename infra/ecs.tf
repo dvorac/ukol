@@ -160,7 +160,7 @@ resource "aws_ecs_task_definition" "web" {
         },
         {
           name = "PORT",
-          value = local.web.port
+          value = "${tostring(local.web.port)}"
         }
       ]
     }
