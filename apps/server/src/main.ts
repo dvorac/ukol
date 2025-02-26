@@ -13,10 +13,12 @@ app.use(express.static(REACT_APP_PATH));
 app.use(cors())
 
 app.get('/health', (_, res) => {
+  res.set('Cache-Control', 'no-cache');
   res.status(200).json({ status: 'OK' });
 });
 
 app.get('/config', (_, res) => {
+  res.set('Cache-Control', `public, max-age=${60*15}`)
   res.status(200).json({
     API: process.env['API'],
     GQL: process.env['GQL']
