@@ -17,14 +17,13 @@ export const useConfig = () => useContext(ConfigContext);
 
 export const ConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({ children, ...props }) => {
 
-  const getConfig = async () => {
-    const response = await fetch(environment.config);
-    return await response.json();
-  }
-
   const { error, data, isFetching } = useQuery<Config>({
     queryKey: ['config'],
-    queryFn: getConfig
+    refetchOnWindowFocus: false,
+    queryFn: async () => {
+      const response = await fetch(environment.config);
+      return await response.json();
+    }
   });
 
   if (isFetching) {
