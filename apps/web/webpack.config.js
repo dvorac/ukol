@@ -9,6 +9,8 @@ module.exports = composePlugins(
     config.plugins?.push(TanStackRouterWebpack({
       target: `react`,
       autoCodeSplitting: true,
+      routesDirectory: './apps/web/src/routes',
+      generatedRouteTree: './apps/web/src/routeTree.gen.ts'
     }))
     return config;
   }
