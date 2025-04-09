@@ -5,7 +5,7 @@
  *
  * See also https://nx.dev/packages/node/executors/webpack#generatepackagejson
  *
- * This approach ensures we maintain version parity in each depdendency between
+ * This approach ensures we maintain version parity in each dependency between
  * the output package.json, and the project-root package.json, _without_ the need
  * to maintain it by hand.
  *

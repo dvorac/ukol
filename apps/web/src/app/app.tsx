@@ -1,14 +1,14 @@
+import { PropsWithChildren } from 'react';
 import { Apollo } from './apollo';
 import { ConfigProvider } from './config';
-import { Home } from './home/home';
 import { Query } from './query';
 
-export const App = () => {
+export const App: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <Query>
       <ConfigProvider>
         <Apollo>
-          <Home/>
+          {children}
         </Apollo>
       </ConfigProvider>
     </Query>
