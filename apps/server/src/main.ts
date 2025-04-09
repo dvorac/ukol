@@ -27,7 +27,7 @@ app.get('/config', (_, res) => {
 
 // Handle all other routes by serving the React app's index.html
 app.get('*', (_, res) => {
-  res.sendFile(path.join(REACT_APP_PATH, 'index.html'));
+  res.sendFile(path.join(__dirname, REACT_APP_PATH, 'index.html'));
 });
 
 const server = app.listen(PORT, () => {
