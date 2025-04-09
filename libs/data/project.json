@@ -46,10 +46,10 @@
         }
       }
     },
-    "knex": {
+    "migrate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "yarn knex --cwd libs/knex-models/src/db"
+        "command": "yarn knex migrate:latest --cwd libs/data/src/db"
       }
     }
   },

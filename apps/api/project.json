@@ -33,7 +33,8 @@
     "serve": {
       "executor": "@nx/js:node",
       "options": {
-        "buildTarget": "api:build"
+        "buildTarget": "api:build",
+        "port": 3334
       },
       "configurations": {
         "production": {

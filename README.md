@@ -10,23 +10,50 @@ That said, this app is a simple elevator simulator. At it's simplest configurati
 
 This project is a monorepo managed with [`nx`](https://nx.dev/). You will need to be able to run docker containers locally to run the app, with software such as [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/). You also need [`yarn`](https://yarnpkg.com/) to install dependencies and run the app locally.
 
-```
+```bash
 yarn
 ```
 
 ## Getting Started
 
-All app components can be run entirely from a single docker command
-```
+There are two options to run locally, 
+1. via containers with `docker-compose`, 
+1. or running each app individually via NX.
+
+### Docker
+
+All app components can be run entirely from a single docker command:
+```bash
 docker-compose up -d
 ```
 
-or, you can run them locally thru `nx`
-```
-yarn nx run-many --target=build
-yarn nx run-many --target=serve
-```
-When running thru NX, you will still need to setup your own local Postgres database instance.
+### NX
+
+1. Build entire project:
+    ```bash
+    yarn nx run-many --target=build
+    ```
+1. Spin up the Postgres instance via Docker:
+    ```bash
+    docker-compose up -d db
+    ```
+1. Migrate db to current schema:
+    ```bash
+    DB_CONNECTION_STRING=postgresql://postgres:postgres@localhost:5432/ukol yarn nx run data:migrate
+    ```
+1. Serve* `api` project:
+    ```bash
+    yarn nx run api:serve:development
+    ```
+1. Serve* `server` project, the frontend host:
+    ```bash
+    yarn nx run server:serve:development
+    ```
+1. Serve* `web` project, the React frontend:
+    ```bash
+    yarn nx run web:serve:development
+    ```
+> *Each of these steps will probably need to be run in it's own shell.
 
 ## Feature List
 
